@@ -1,0 +1,53 @@
+{
+    "RESUME-CONFIG": {
+        "title": "Resume",
+        "sections": ["personalDetails"],
+        "sectionConfig": [
+            {
+                "id": "personalDetails",
+                "title": "Personal Details",
+                "controlGroup": [
+                    {
+                        "id": "firstName",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "First Name",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter First Name",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "lastName",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "Last Name",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Last Name",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "gender",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "Gender",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Gender",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "RESUME-1001": {
+        "personalDetails": { "firstName": "John", "lastName": "Doe", "gender": "MALE" }
+    }
+}
