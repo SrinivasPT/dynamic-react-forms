@@ -1,4 +1,5 @@
-import SmartTextControl from "./SmartControls/TextControl";
+import RadioControl from "./SmartControls/RadioControl";
+import TextControl from "./SmartControls/TextControl";
 
 const SmartSubSectionComponent = ({ sectionConfig }) => {
     const controlGroup = sectionConfig["controlGroup"];
@@ -7,9 +8,9 @@ const SmartSubSectionComponent = ({ sectionConfig }) => {
         const key = `section-${sectionConfig.id}-${control.id}`;
         switch (control.type) {
             case "TEXT":
-                return <SmartTextControl key={key} sectionId={sectionConfig.id} control={control} />;
-            case "DATE":
-                return <SmartTextControl key={key} />;
+                return <TextControl key={key} sectionId={sectionConfig.id} control={control} />;
+            case "RADIO":
+                return <RadioControl key={key} sectionId={sectionConfig.id} control={control} />;
             default:
                 return new Error();
         }

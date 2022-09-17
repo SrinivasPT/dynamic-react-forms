@@ -9,12 +9,15 @@ export const SmartComponentContext = createContext(null);
 const SmartComponent = ({ name, id, reducer }) => {
     const URL_FOR_CONFIG = `http://localhost:3007/${name}-Config`;
     const URL_FOR_FORM_DATA = `http://localhost:3007/${name}-${id}`;
+    const URL_FOR_DOMAIN_DATA = `http://localhost:3007/domain`;
 
     // TODO: Child to enhance the reducer for the custom functionality... but how to add the child reducer functionality to the smart reducer???
     const [state, dispatch] = useReducer(smartReducer, {
         config: {},
         data: {},
+        domain: [],
         isFormDataLoading: false,
+        isDomainDataLoading: false,
         isConfigLoading: false,
         isError: false,
     });
@@ -22,6 +25,7 @@ const SmartComponent = ({ name, id, reducer }) => {
     const handleFetchComponentDetails = () => {
         dispatch({ type: "CONFIG_FETCH_INIT" });
         dispatch({ type: "FORM_DATA_FETCH_INIT" });
+        dispatch({ type: "DOMAIN_DATA_FETCH_INIT" });
 
         Promise.all([
             axios
@@ -32,6 +36,10 @@ const SmartComponent = ({ name, id, reducer }) => {
                 .get(URL_FOR_FORM_DATA)
                 .then((result) => dispatch({ type: "FORM_DATA_FETCH_SUCCESS", payload: result.data }))
                 .catch(() => dispatch({ type: "FORM_DATA_FETCH_ERROR" })),
+            axios
+                .get(URL_FOR_DOMAIN_DATA)
+                .then((result) => dispatch({ type: "DOMAIN_DATA_FETCH_SUCCESS", payload: result.data }))
+                .catch(() => dispatch({ type: "DOMAIN_DATA_FETCH_ERROR" })),
         ]);
     };
 
@@ -55,6 +63,7 @@ const SmartComponent = ({ name, id, reducer }) => {
                                     {sectionConfig.title}
                                 </div>
                                 <div key={`section-card-body${sectionId}`} className="card-body">
+                                    {/* This is the main component. */}
                                     <SmartSubSectionComponent
                                         key={`section-${sectionId}`}
                                         sectionConfig={sectionConfig}

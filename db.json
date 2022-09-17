@@ -33,14 +33,31 @@
                     },
                     {
                         "id": "gender",
+                        "type": "RADIO",
+                        "width": 12,
+                        "props": {
+                            "label": "Gender",
+                            "domainCategoryCode": "GENDER",
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "country",
                         "type": "TEXT",
                         "width": 6,
                         "props": {
-                            "label": "Gender",
-                            "inputMode": "text",
-                            "placeHolder": "Please enter Gender",
-                            "maxLength": 50,
+                            "label": "Country",
                             "required": true
+                        }
+                    },
+                    {
+                        "id": "city",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "City",
+                            "required": true,
+                            "parentDomainCategoryCode": "COUNTRY"
                         }
                     }
                 ]
@@ -48,6 +65,57 @@
         ]
     },
     "RESUME-1001": {
-        "personalDetails": { "firstName": "John", "lastName": "Doe", "gender": "MALE" }
-    }
+        "personalDetails": {
+            "id": 1001,
+            "firstName": "John",
+            "lastName": "Doe",
+            "gender": "MALE",
+            "country": "INDIA",
+            "city": "HYDERABAD"
+        }
+    },
+    "DOMAIN": [
+        { "categoryCode": "GENDER", "code": "MALE", "value": "Male", "parent": "" },
+        { "categoryCode": "GENDER", "code": "FEMALE", "value": "Female", "parent": "" },
+        { "categoryCode": "GENDER", "code": "GENDER1", "value": "Gender 1", "parent": "" },
+        { "categoryCode": "GENDER", "code": "GENDER2", "value": "Gender 2", "parent": "" },
+        { "categoryCode": "GENDER", "code": "GENDER3", "value": "Gender 3", "parent": "" },
+        { "categoryCode": "COUNTRY", "code": "INDIA", "value": "India", "parent": "" },
+        { "categoryCode": "COUNTRY", "code": "USA", "value": "USA", "parent": "" },
+        {
+            "categoryCode": "CITY",
+            "code": "HYDERABAD",
+            "value": "Hyderabad",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "PUNE",
+            "value": "Pune",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "BANGALORE",
+            "value": "Bangalore",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "NEW_YORK",
+            "value": "New York",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "USA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "CALIFORNIA",
+            "value": "California",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "USA"
+        }
+    ]
 }
