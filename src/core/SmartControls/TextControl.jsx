@@ -7,6 +7,7 @@ const TextControl = ({ sectionId, control }) => {
 
     const handleValueChange = (name, value) =>
         dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });
+    const readOnlyStyle = state.isReadOnly ? "form-control-plaintext" : "";
 
     return (
         <div className={`col-${control.width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
@@ -15,7 +16,7 @@ const TextControl = ({ sectionId, control }) => {
             </label>
             <input
                 type={control.type}
-                className="form-control form-control-lg"
+                className={`form-control form-control-lg ${readOnlyStyle}`}
                 id={control.id}
                 placeholder={control.props.placeholder}
                 inputMode={control.props.inputMode}

@@ -17,7 +17,7 @@ const RadioControl = ({ sectionId, control }) => {
                     <div className="col-2" key={`${sectionId}-${control.id}-radio-top-${domain.code}`}>
                         <input
                             key={`${sectionId}-${control.id}-radio-${domain.code}`}
-                            className="form-check-input"
+                            className={`form-check-input`}
                             type="radio"
                             name={control.id}
                             id={domain.code}

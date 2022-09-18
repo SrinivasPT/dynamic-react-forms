@@ -16,9 +16,8 @@ const SmartComponent = ({ name, id, reducer }) => {
         config: {},
         data: {},
         domain: [],
-        isFormDataLoading: false,
-        isDomainDataLoading: false,
-        isConfigLoading: false,
+        flags: { isFormDataLoading: false, isDomainDataLoading: false, isConfigLoading: false },
+        mode: { isReadOnly: false, isEdit: false, sectionInEditMode: "" },
         isError: false,
     });
 
@@ -43,6 +42,12 @@ const SmartComponent = ({ name, id, reducer }) => {
         ]);
     };
 
+    const handleEditSection = (sectionId) => {
+        dispatch({ type: "EDIT_SECTION_START", payload: sectionId });
+    };
+
+    const sections = state.mode.isEdit ? [state.mode.sectionInEditMode] : state.config.sections;
+
     useEffect(() => {
         handleFetchComponentDetails();
     }, []);
@@ -50,17 +55,20 @@ const SmartComponent = ({ name, id, reducer }) => {
     return (
         <SmartComponentContext.Provider value={{ state, dispatch }}>
             <form className="m-3">
-                {state?.isFormDataLoading || state?.isConfigLoading ? (
+                {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? (
                     <WaitingControl />
                 ) : (
-                    state["config"]["sections"]?.map((sectionId) => {
+                    sections?.map((sectionId) => {
                         const sectionConfig = state["config"]["sectionConfig"]?.filter(
-                            (section) => (section.id = sectionId)
+                            (section) => section.id === sectionId
                         )[0];
                         return (
-                            <div key={`section-card-${sectionId}`} className="card">
+                            <div key={`section-card-${sectionId}`} className="card mb-3">
                                 <div key={`section-card-header${sectionId}`} className="card-header">
-                                    {sectionConfig.title}
+                                    <div className="d-flex justify-content-between">
+                                        {sectionConfig.title}
+                                        <i className="bi bi-pencil" onClick={() => handleEditSection(sectionId)}></i>
+                                    </div>
                                 </div>
                                 <div key={`section-card-body${sectionId}`} className="card-body">
                                     {/* This is the main component. */}
@@ -68,6 +76,12 @@ const SmartComponent = ({ name, id, reducer }) => {
                                         key={`section-${sectionId}`}
                                         sectionConfig={sectionConfig}
                                     />
+                                    {state.mode.isEdit && (
+                                        <div className="d-flex justify-content-center">
+                                            <button className="btn btn-primary mx-2 col-2">Save</button>
+                                            <button className="btn btn-secondary mx-2 col-2">Cancel</button>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         );

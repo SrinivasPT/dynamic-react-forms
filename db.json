@@ -1,7 +1,7 @@
 {
     "RESUME-CONFIG": {
         "title": "Resume",
-        "sections": ["personalDetails"],
+        "sections": ["personalDetails", "contactInformation"],
         "sectionConfig": [
             {
                 "id": "personalDetails",
@@ -43,21 +43,53 @@
                     },
                     {
                         "id": "country",
-                        "type": "TEXT",
+                        "type": "SELECT",
                         "width": 6,
                         "props": {
                             "label": "Country",
-                            "required": true
+                            "required": true,
+                            "domainCategoryCode": "COUNTRY"
                         }
                     },
                     {
                         "id": "city",
-                        "type": "TEXT",
+                        "type": "SELECT",
                         "width": 6,
                         "props": {
                             "label": "City",
                             "required": true,
+                            "domainCategoryCode": "CITY",
                             "parentDomainCategoryCode": "COUNTRY"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "contactInformation",
+                "title": "Contact Information",
+                "controlGroup": [
+                    {
+                        "id": "cell",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "Contact Number (cell)",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Cell Number",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "email",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "Email",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter E-Mail",
+                            "maxLength": 50,
+                            "required": true
                         }
                     }
                 ]
@@ -70,8 +102,12 @@
             "firstName": "John",
             "lastName": "Doe",
             "gender": "MALE",
-            "country": "INDIA",
-            "city": "HYDERABAD"
+            "country": "USA",
+            "city": "NEW_YORK"
+        },
+        "contactInformation": {
+            "cell": 9000000001,
+            "email": "doe.john@godmail.com"
         }
     },
     "DOMAIN": [

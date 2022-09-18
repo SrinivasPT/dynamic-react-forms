@@ -1,4 +1,5 @@
 import RadioControl from "./SmartControls/RadioControl";
+import SelectControl from "./SmartControls/SelectControl";
 import TextControl from "./SmartControls/TextControl";
 
 const SmartSubSectionComponent = ({ sectionConfig }) => {
@@ -11,6 +12,8 @@ const SmartSubSectionComponent = ({ sectionConfig }) => {
                 return <TextControl key={key} sectionId={sectionConfig.id} control={control} />;
             case "RADIO":
                 return <RadioControl key={key} sectionId={sectionConfig.id} control={control} />;
+            case "SELECT":
+                return <SelectControl key={key} sectionId={sectionConfig.id} control={control} />;
             default:
                 return new Error();
         }
