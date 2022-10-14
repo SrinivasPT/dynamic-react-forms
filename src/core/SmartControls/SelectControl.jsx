@@ -4,7 +4,15 @@ import { SmartComponentContext } from "../SmartComponent";
 
 const SelectControl = ({ sectionId, control }) => {
     const { state, dispatch } = useContext(SmartComponentContext);
-    const controlDomain = state["domain"].filter((domain) => domain.categoryCode === control.props.domainCategoryCode);
+    const controlDomain = state["domain"].filter((domain) => {
+        if (control.props.parent === null || control.props.parent === undefined || control.props.parent.length === 0)
+            return domain.categoryCode === control.props.domainCategoryCode;
+        else
+            return (
+                domain.categoryCode === control.props.domainCategoryCode &&
+                state["data"][sectionId][control.props.parent] === domain.parentCode
+            );
+    });
 
     const handleValueChange = (name, value) =>
         dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });
@@ -19,12 +27,14 @@ const SelectControl = ({ sectionId, control }) => {
                 className="form-select form-select-lg"
                 value={state["data"][sectionId][control.id]}
                 onChange={(event) => handleValueChange(control.id, event.target.value)}
+                disabled={!state.mode.isEdit}
             >
                 {controlDomain.map((domain) => (
                     <option
                         key={`${sectionId}-${control.id}-select-${domain.code}`}
                         value={domain.code}
                         defaultValue={state["data"][sectionId][control.id] === domain.code}
+                        readOnly={state.mode.isEdit}
                     >
                         {domain.value}
                     </option>

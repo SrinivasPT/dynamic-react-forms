@@ -1,7 +1,7 @@
 {
     "RESUME-CONFIG": {
         "title": "Resume",
-        "sections": ["personalDetails", "contactInformation"],
+        "sections": ["contactInformation"],
         "sectionConfig": [
             {
                 "id": "personalDetails",
@@ -10,7 +10,7 @@
                     {
                         "id": "firstName",
                         "type": "TEXT",
-                        "width": 6,
+                        "width": 4,
                         "props": {
                             "label": "First Name",
                             "inputMode": "text",
@@ -22,7 +22,7 @@
                     {
                         "id": "lastName",
                         "type": "TEXT",
-                        "width": 6,
+                        "width": 4,
                         "props": {
                             "label": "Last Name",
                             "inputMode": "text",
@@ -34,7 +34,7 @@
                     {
                         "id": "gender",
                         "type": "RADIO",
-                        "width": 12,
+                        "width": 4,
                         "props": {
                             "label": "Gender",
                             "domainCategoryCode": "GENDER",
@@ -44,7 +44,7 @@
                     {
                         "id": "country",
                         "type": "SELECT",
-                        "width": 6,
+                        "width": 4,
                         "props": {
                             "label": "Country",
                             "required": true,
@@ -54,12 +54,33 @@
                     {
                         "id": "city",
                         "type": "SELECT",
-                        "width": 6,
+                        "width": 4,
                         "props": {
                             "label": "City",
                             "required": true,
                             "domainCategoryCode": "CITY",
+                            "parent": "country"
+                        }
+                    },
+                    {
+                        "id": "isManager",
+                        "type": "CHECK",
+                        "width": 4,
+                        "props": {
+                            "label": "Is Manager",
+                            "required": true,
+                            "domainCategoryCode": "CITY",
                             "parentDomainCategoryCode": "COUNTRY"
+                        }
+                    },
+                    {
+                        "id": "numberOfEmployeesReporting",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "# of Employees Reporting",
+                            "required": true,
+                            "hideExpression": "!model['data']['personalDetails']['isManager']"
                         }
                     }
                 ]
@@ -71,7 +92,7 @@
                     {
                         "id": "cell",
                         "type": "TEXT",
-                        "width": 6,
+                        "width": 4,
                         "props": {
                             "label": "Contact Number (cell)",
                             "inputMode": "text",
@@ -81,13 +102,61 @@
                         }
                     },
                     {
-                        "id": "email",
-                        "type": "TEXT",
-                        "width": 6,
+                        "id": "customField",
+                        "type": "CUSTOM",
+                        "width": 4,
                         "props": {
-                            "label": "Email",
+                            "sectionId": "customSection"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "educationDetails",
+                "title": "Eduction Information",
+                "controlGroup": [
+                    {
+                        "key": "educationDetails",
+                        "type": "GRID_BOX",
+                        "id": "educationDetails",
+                        "props": {
+                            "gridOptions": {
+                                "columnDefs": [
+                                    { "id": "collegeName", "label": "College Name", "width": 12 },
+                                    { "id": "experience", "label": "Experience", "width": 12 },
+                                    { "id": "city", "label": "City", "width": 12 },
+                                    { "id": "country", "label": "Country", "width": 12 }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "customSection",
+                "title": "Custom Section Information",
+                "parent": "contactInformation",
+                "controlGroup": [
+                    {
+                        "id": "fieldOne",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "Field One",
                             "inputMode": "text",
-                            "placeHolder": "Please enter E-Mail",
+                            "placeHolder": "Please enter Field One",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "fieldTwo",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "Field Two",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Field Two",
                             "maxLength": 50,
                             "required": true
                         }
@@ -103,19 +172,24 @@
             "lastName": "Doe",
             "gender": "MALE",
             "country": "USA",
-            "city": "NEW_YORK"
+            "city": "NEW_YORK",
+            "isManager": true,
+            "numberOfEmployeesReporting": 10
         },
         "contactInformation": {
             "cell": 9000000001,
-            "email": "doe.john@godmail.com"
-        }
+            "customSection": { "fieldOne": "Field One 1", "fieldTwo": "Field Two 2" }
+        },
+        "educationDetails": [
+            { "collegeName": "ABC College", "experience": 10, "city": "Hyderabad", "country": "India" },
+            { "collegeName": "DEF College", "experience": 10, "city": "Pune", "country": "India" },
+            { "collegeName": "XYG University", "experience": 10, "city": "NY", "country": "USA" }
+        ]
     },
     "DOMAIN": [
         { "categoryCode": "GENDER", "code": "MALE", "value": "Male", "parent": "" },
         { "categoryCode": "GENDER", "code": "FEMALE", "value": "Female", "parent": "" },
-        { "categoryCode": "GENDER", "code": "GENDER1", "value": "Gender 1", "parent": "" },
-        { "categoryCode": "GENDER", "code": "GENDER2", "value": "Gender 2", "parent": "" },
-        { "categoryCode": "GENDER", "code": "GENDER3", "value": "Gender 3", "parent": "" },
+        { "categoryCode": "GENDER", "code": "OTHER", "value": "Other", "parent": "" },
         { "categoryCode": "COUNTRY", "code": "INDIA", "value": "India", "parent": "" },
         { "categoryCode": "COUNTRY", "code": "USA", "value": "USA", "parent": "" },
         {

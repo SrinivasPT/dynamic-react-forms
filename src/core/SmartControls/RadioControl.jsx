@@ -14,7 +14,7 @@ const RadioControl = ({ sectionId, control }) => {
             <legend className="col-form-label col-sm-2 pt-0">{control.props.label}</legend>
             <div className="d-flex flex-wrap form-check">
                 {controlDomain.map((domain) => (
-                    <div className="col-2" key={`${sectionId}-${control.id}-radio-top-${domain.code}`}>
+                    <div className="col-4" key={`${sectionId}-${control.id}-radio-top-${domain.code}`}>
                         <input
                             key={`${sectionId}-${control.id}-radio-${domain.code}`}
                             className={`form-check-input`}
@@ -24,6 +24,7 @@ const RadioControl = ({ sectionId, control }) => {
                             value={state["data"][sectionId][control.id]}
                             checked={state["data"][sectionId][control.id] === domain.code}
                             onChange={(event) => handleValueChange(control.id, event.target.value)}
+                            disabled={!state.mode.isEdit}
                         />
                         <label
                             key={`${sectionId}-${control.id}-radio-label-${domain.code}`}

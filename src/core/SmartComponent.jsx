@@ -3,16 +3,17 @@ import React, { createContext, useEffect, useReducer } from "react";
 import WaitingControl from "./SmartControls/WaitingControl";
 import smartReducer from "./SmartReducer";
 import SmartSubSectionComponent from "./SmartSubSectionComponent";
+import { useImmerReducer } from "use-immer";
 
 export const SmartComponentContext = createContext(null);
 
-const SmartComponent = ({ name, id, reducer }) => {
+const SmartComponent = ({ name, id }) => {
     const URL_FOR_CONFIG = `http://localhost:3007/${name}-Config`;
     const URL_FOR_FORM_DATA = `http://localhost:3007/${name}-${id}`;
     const URL_FOR_DOMAIN_DATA = `http://localhost:3007/domain`;
 
     // TODO: Child to enhance the reducer for the custom functionality... but how to add the child reducer functionality to the smart reducer???
-    const [state, dispatch] = useReducer(smartReducer, {
+    const [state, dispatch] = useImmerReducer(smartReducer, {
         config: {},
         data: {},
         domain: [],
@@ -42,11 +43,13 @@ const SmartComponent = ({ name, id, reducer }) => {
         ]);
     };
 
-    const handleEditSection = (sectionId) => {
-        dispatch({ type: "EDIT_SECTION_START", payload: sectionId });
-    };
+    const handleEditSection = (sectionId) => dispatch({ type: "EDIT_SECTION_START", payload: sectionId });
 
     const sections = state.mode.isEdit ? [state.mode.sectionInEditMode] : state.config.sections;
+
+    const handleSectionSave = () => dispatch({ type: "EDIT_SECTION_SAVE" });
+
+    const handleSectionCancel = () => dispatch({ type: "EDIT_SECTION_CANCEL" });
 
     useEffect(() => {
         handleFetchComponentDetails();
@@ -72,14 +75,18 @@ const SmartComponent = ({ name, id, reducer }) => {
                                 </div>
                                 <div key={`section-card-body${sectionId}`} className="card-body">
                                     {/* This is the main component. */}
-                                    <SmartSubSectionComponent
-                                        key={`section-${sectionId}`}
-                                        sectionConfig={sectionConfig}
-                                    />
+                                    <SmartSubSectionComponent key={`section-${sectionId}`} sectionId={sectionId} />
                                     {state.mode.isEdit && (
                                         <div className="d-flex justify-content-center">
-                                            <button className="btn btn-primary mx-2 col-2">Save</button>
-                                            <button className="btn btn-secondary mx-2 col-2">Cancel</button>
+                                            <button className="btn btn-primary mx-2 col-2" onClick={handleSectionSave}>
+                                                Save
+                                            </button>
+                                            <button
+                                                className="btn btn-secondary mx-2 col-2"
+                                                onClick={handleSectionCancel}
+                                            >
+                                                Cancel
+                                            </button>
                                         </div>
                                     )}
                                 </div>
