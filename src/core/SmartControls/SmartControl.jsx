@@ -1,26 +1,29 @@
 import { useContext } from "react";
-import { evaluateExpression } from "./common/utility";
-import { SmartComponentContext } from "./SmartComponent";
-import CheckControl from "./SmartControls/CheckControl";
-import GridBoxControl from "./SmartControls/GridBoxControl";
-import RadioControl from "./SmartControls/RadioControl";
-import SelectControl from "./SmartControls/SelectControl";
-import TextControl from "./SmartControls/TextControl";
+import { evaluateExpression } from "../common/utility";
+import CheckControl from "./CheckControl";
+import GridBoxControl from "./GridBoxControl";
+import RadioControl from "./RadioControl";
+import SelectControl from "./SelectControl";
+import SmartArrayControl from "./SmartArrayControl";
+import { SmartContext } from "./SmartPageControl";
+import TextControl from "./TextControl";
 
-const SmartSubSectionComponent = ({ sectionId }) => {
-    const { state } = useContext(SmartComponentContext);
+const SmartControl = ({ sectionId, index }) => {
+    const { state } = useContext(SmartContext);
     const sectionConfig = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0];
     const controlGroup = sectionConfig["controlGroup"];
 
     const getControl = (control) => {
         const key = `section-${sectionConfig.id}-${control.id}`;
 
-        const isHidden = evaluateExpression(control.props.hideExpression, state);
-        if (isHidden) return;
+        if (control?.props?.hideExpression !== undefined) {
+            const isHidden = evaluateExpression(control.props.hideExpression, state);
+            if (isHidden) return;
+        }
 
         switch (control.type) {
             case "TEXT":
-                return <TextControl key={key} sectionId={sectionConfig.id} control={control} />;
+                return <TextControl key={key} sectionId={sectionConfig.id} control={control} index={index} />;
             case "RADIO":
                 return <RadioControl key={key} sectionId={sectionConfig.id} control={control} />;
             case "CHECK":
@@ -30,7 +33,9 @@ const SmartSubSectionComponent = ({ sectionId }) => {
             case "GRID_BOX":
                 return <GridBoxControl key={key} sectionId={control.id} control={control} />;
             case "CUSTOM":
-                return <SmartSubSectionComponent key={key} sectionId={control.props.sectionId} />;
+                return <SmartControl key={key} sectionId={control.id} />;
+            case "CUSTOM_ARRAY":
+                return <SmartArrayControl key={key} sectionId={control.id} />;
             default:
                 return new Error();
         }
@@ -43,4 +48,4 @@ const SmartSubSectionComponent = ({ sectionId }) => {
     );
 };
 
-export default SmartSubSectionComponent;
+export default SmartControl;

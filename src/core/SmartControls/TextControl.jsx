@@ -1,18 +1,14 @@
 import React, { useContext } from "react";
 import { Style } from "../common/Settings";
-import { SmartComponentContext } from "../SmartComponent";
+import { getStateKeyValueForControl } from "./SmartFunctions";
+import { SmartContext } from "./SmartPageControl";
 
-const TextControl = ({ sectionId, control }) => {
-    const { state, dispatch } = useContext(SmartComponentContext);
-
-    const parent = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0]["parent"];
-
-    const dataKey = parent ? parent + "." + sectionId + "." + control.id : sectionId + "." + control.id;
-
-    const value = dataKey.split(".").reduce((a, c) => a[c], state.data);
+const TextControl = ({ sectionId, index, control }) => {
+    const { state, dispatch } = useContext(SmartContext);
+    const { key, data } = getStateKeyValueForControl(sectionId, index, state, control);
 
     const handleValueChange = (name, value) =>
-        dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { dataKey, name, value } });
+        dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { key, name, value } });
 
     const readOnlyStyle = state.isReadOnly ? "form-control-plaintext" : "";
 
@@ -27,7 +23,7 @@ const TextControl = ({ sectionId, control }) => {
                 id={control.id}
                 placeholder={control.props.placeholder}
                 inputMode={control.props.inputMode}
-                value={value}
+                value={data}
                 required={control.props.required}
                 onChange={(event) => handleValueChange(control.id, event.target.value)}
                 minLength={control.props.minLength}

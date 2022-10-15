@@ -1,9 +1,9 @@
 import React from "react";
 import { useContext } from "react";
-import { SmartComponentContext } from "../SmartComponent";
+import { SmartContext } from "./SmartPageControl";
 
 const GridBoxControl = ({ sectionId, control }) => {
-    const { state, dispatch } = useContext(SmartComponentContext);
+    const { state, dispatch } = useContext(SmartContext);
 
     return (
         <div className="d-flex flex-wrap">

@@ -1,11 +1,11 @@
 import React from "react";
 import { useContext } from "react";
 import { Style } from "../common/Settings";
-import { SmartComponentContext } from "../SmartComponent";
+import { SmartContext } from "./SmartPageControl";
 
 const CheckControl = ({ sectionId, control }) => {
     console.log("In the check control!");
-    const { state, dispatch } = useContext(SmartComponentContext);
+    const { state, dispatch } = useContext(SmartContext);
 
     const handleValueChange = (name, value) => {
         dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });

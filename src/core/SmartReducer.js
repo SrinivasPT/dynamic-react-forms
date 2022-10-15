@@ -35,9 +35,6 @@ const smartReducer = (state, action) => {
             state.mode.sectionInEditMode = action.payload;
             break;
         case "EDIT_SECTION_SAVE":
-            state.mode.isEdit = false;
-            state.mode.sectionInEditMode = "";
-            break;
         case "EDIT_SECTION_CANCEL":
             state.mode.isEdit = false;
             state.mode.sectionInEditMode = "";
@@ -54,7 +51,6 @@ const smartReducer = (state, action) => {
                     element[nodes[i]] = action.payload.value;
                 }
             }
-            //state.data[action.payload.sectionId][action.payload.name] = action.payload.value;
             break;
         default:
             throw new Error();

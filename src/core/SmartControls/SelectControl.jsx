@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Style } from "../common/Settings";
-import { SmartComponentContext } from "../SmartComponent";
+import { SmartContext } from "./SmartPageControl";
 
 const SelectControl = ({ sectionId, control }) => {
-    const { state, dispatch } = useContext(SmartComponentContext);
+    const { state, dispatch } = useContext(SmartContext);
     const controlDomain = state["domain"].filter((domain) => {
         if (control.props.parent === null || control.props.parent === undefined || control.props.parent.length === 0)
             return domain.categoryCode === control.props.domainCategoryCode;

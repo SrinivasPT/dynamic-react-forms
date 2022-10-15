@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Style } from "../common/Settings";
-import { SmartComponentContext } from "../SmartComponent";
+import { SmartContext } from "./SmartPageControl";
 
 const RadioControl = ({ sectionId, control }) => {
-    const { state, dispatch } = useContext(SmartComponentContext);
+    const { state, dispatch } = useContext(SmartContext);
     const controlDomain = state["domain"].filter((domain) => domain.categoryCode === control.props.domainCategoryCode);
 
     const handleValueChange = (name, value) =>

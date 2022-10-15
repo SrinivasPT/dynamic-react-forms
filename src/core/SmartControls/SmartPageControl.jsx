@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { createContext, useEffect, useReducer } from "react";
-import WaitingControl from "./SmartControls/WaitingControl";
-import smartReducer from "./SmartReducer";
-import SmartSubSectionComponent from "./SmartSubSectionComponent";
+import WaitingControl from "./WaitingControl";
+import smartReducer from "../SmartReducer";
 import { useImmerReducer } from "use-immer";
+import SmartControl from "./SmartControl";
 
-export const SmartComponentContext = createContext(null);
+export const SmartContext = createContext(null);
 
-const SmartComponent = ({ name, id }) => {
+const SmartPageControl = ({ name, id }) => {
     const URL_FOR_CONFIG = `http://localhost:3007/${name}-Config`;
     const URL_FOR_FORM_DATA = `http://localhost:3007/${name}-${id}`;
     const URL_FOR_DOMAIN_DATA = `http://localhost:3007/domain`;
@@ -56,7 +56,7 @@ const SmartComponent = ({ name, id }) => {
     }, []);
 
     return (
-        <SmartComponentContext.Provider value={{ state, dispatch }}>
+        <SmartContext.Provider value={{ state, dispatch }}>
             <form className="m-3">
                 {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? (
                     <WaitingControl />
@@ -75,7 +75,7 @@ const SmartComponent = ({ name, id }) => {
                                 </div>
                                 <div key={`section-card-body${sectionId}`} className="card-body">
                                     {/* This is the main component. */}
-                                    <SmartSubSectionComponent key={`section-${sectionId}`} sectionId={sectionId} />
+                                    <SmartControl key={`section-${sectionId}`} sectionId={sectionId} />
                                     {state.mode.isEdit && (
                                         <div className="d-flex justify-content-center">
                                             <button className="btn btn-primary mx-2 col-2" onClick={handleSectionSave}>
@@ -95,8 +95,8 @@ const SmartComponent = ({ name, id }) => {
                     })
                 )}
             </form>
-        </SmartComponentContext.Provider>
+        </SmartContext.Provider>
     );
 };
 
-export default SmartComponent;
+export default SmartPageControl;
