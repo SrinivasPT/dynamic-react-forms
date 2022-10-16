@@ -92,7 +92,7 @@
                     {
                         "id": "cell",
                         "type": "TEXT",
-                        "width": 4,
+                        "width": 6,
                         "props": {
                             "label": "Contact Number (cell)",
                             "inputMode": "text",
@@ -103,12 +103,12 @@
                     },
                     {
                         "id": "customArrayField",
-                        "type": "CUSTOM_ARRAY",
+                        "type": "SMART_ARRAY",
                         "width": 4
                     },
                     {
                         "id": "customField",
-                        "type": "CUSTOM",
+                        "type": "SMART",
                         "width": 4
                     }
                 ]
@@ -136,13 +136,13 @@
             },
             {
                 "id": "customField",
-                "title": "Custom Section Information",
+                "title": "Custom Field Section",
                 "parent": "contactInformation",
                 "controlGroup": [
                     {
                         "id": "fieldOne",
                         "type": "TEXT",
-                        "width": 4,
+                        "width": 6,
                         "props": {
                             "label": "Field One",
                             "inputMode": "text",
@@ -154,7 +154,7 @@
                     {
                         "id": "fieldTwo",
                         "type": "TEXT",
-                        "width": 4,
+                        "width": 6,
                         "props": {
                             "label": "Field Two",
                             "inputMode": "text",
@@ -167,13 +167,12 @@
             },
             {
                 "id": "customFieldTwo",
-                "title": "Custom Section Information",
-                "parent": "contactInformation.customArrayField",
+                "title": "Custom Field Section Two",
                 "controlGroup": [
                     {
                         "id": "fieldSix",
                         "type": "TEXT",
-                        "width": 4,
+                        "width": 6,
                         "props": {
                             "label": "Field Six",
                             "inputMode": "text",
@@ -185,7 +184,7 @@
                     {
                         "id": "fieldSeven",
                         "type": "TEXT",
-                        "width": 4,
+                        "width": 6,
                         "props": {
                             "label": "Field Seven",
                             "inputMode": "text",
@@ -198,13 +197,12 @@
             },
             {
                 "id": "customArrayField",
-                "title": "Custom Section Information",
-                "parent": "contactInformation",
+                "title": "Custom Array Section",
                 "controlGroup": [
                     {
                         "id": "fieldThree",
                         "type": "TEXT",
-                        "width": 4,
+                        "width": 6,
                         "props": {
                             "label": "Field Three",
                             "inputMode": "text",
@@ -216,7 +214,7 @@
                     {
                         "id": "fieldFour",
                         "type": "TEXT",
-                        "width": 4,
+                        "width": 6,
                         "props": {
                             "label": "Field Four",
                             "inputMode": "text",
@@ -227,8 +225,8 @@
                     },
                     {
                         "id": "customFieldTwo",
-                        "type": "CUSTOM",
-                        "width": 4
+                        "type": "SMART",
+                        "width": 12
                     }
                 ]
             }

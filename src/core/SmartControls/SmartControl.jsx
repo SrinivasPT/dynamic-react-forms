@@ -8,11 +8,14 @@ import SmartArrayControl from "./SmartArrayControl";
 import { SmartContext } from "../Context/SmartContext";
 import TextControl from "../FormControls/TextControl";
 import { evaluateExpression } from "../Context/SmartFunctions";
+import CardControl from "../FormControls/CardControl";
+import { Style } from "../Common/Settings";
 
 const SmartControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);
     const sectionConfig = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0];
     const controlGroup = sectionConfig["controlGroup"];
+    //const width = control ? control.width : 12;
 
     const getControl = (control) => {
         const key = `section-${sectionConfig.id}-${control.id}`;
@@ -34,9 +37,9 @@ const SmartControl = ({ sectionId, dataKey }) => {
                 return <SelectControl key={key} sectionId={sectionConfig.id} control={control} dataKey={childDataKey} />;
             case "GRID_BOX":
                 return <GridBoxControl key={key} sectionId={control.id} control={control} dataKey={childDataKey} />;
-            case "CUSTOM":
+            case "SMART":
                 return <SmartControl key={key} sectionId={control.id} dataKey={childDataKey} />;
-            case "CUSTOM_ARRAY":
+            case "SMART_ARRAY":
                 return <SmartArrayControl key={key} sectionId={control.id} dataKey={childDataKey} />;
             default:
                 return new Error();
@@ -44,9 +47,9 @@ const SmartControl = ({ sectionId, dataKey }) => {
     };
 
     return (
-        <div className="container-fluid">
-            <div className="d-flex flex-wrap">{controlGroup.map((control) => getControl(control))}</div>
-        </div>
+        <>
+            <CardControl sectionId={sectionId} component={controlGroup.map((control) => getControl(control))} />
+        </>
     );
 };
 
