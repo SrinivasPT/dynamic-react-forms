@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import SmartControl from "./SmartControl";
 import { getStateKeyValueForSection } from "./SmartFunctions";
-import { SmartContext } from "./SmartPageControl";
+import { SmartContext } from "./SmartContext";
 
 const SmartArrayControl = ({ sectionId }) => {
     const { state } = useContext(SmartContext);

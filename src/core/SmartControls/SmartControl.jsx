@@ -5,7 +5,7 @@ import GridBoxControl from "./GridBoxControl";
 import RadioControl from "./RadioControl";
 import SelectControl from "./SelectControl";
 import SmartArrayControl from "./SmartArrayControl";
-import { SmartContext } from "./SmartPageControl";
+import { SmartContext } from "./SmartContext";
 import TextControl from "./TextControl";
 
 const SmartControl = ({ sectionId, index }) => {

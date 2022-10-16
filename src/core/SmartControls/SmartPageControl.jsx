@@ -1,26 +1,24 @@
 import axios from "axios";
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect } from "react";
 import WaitingControl from "./WaitingControl";
-import smartReducer from "../SmartReducer";
-import { useImmerReducer } from "use-immer";
 import SmartControl from "./SmartControl";
+import { SmartContext } from "./SmartContext";
 
-export const SmartContext = createContext(null);
-
-const SmartPageControl = ({ name, id }) => {
+const SmartPageControl = ({ name, id }, ref) => {
+    const { state, dispatch } = useContext(SmartContext);
     const URL_FOR_CONFIG = `http://localhost:3007/${name}-Config`;
     const URL_FOR_FORM_DATA = `http://localhost:3007/${name}-${id}`;
     const URL_FOR_DOMAIN_DATA = `http://localhost:3007/domain`;
 
     // TODO: Child to enhance the reducer for the custom functionality... but how to add the child reducer functionality to the smart reducer???
-    const [state, dispatch] = useImmerReducer(smartReducer, {
-        config: {},
-        data: {},
-        domain: [],
-        flags: { isFormDataLoading: false, isDomainDataLoading: false, isConfigLoading: false },
-        mode: { isReadOnly: false, isEdit: false, sectionInEditMode: "" },
-        isError: false,
-    });
+    // const [state, dispatch] = useImmerReducer(smartReducer, {
+    //     config: {},
+    //     data: {},
+    //     domain: [],
+    //     flags: { isFormDataLoading: false, isDomainDataLoading: false, isConfigLoading: false },
+    //     mode: { isReadOnly: false, isEdit: false, sectionInEditMode: "" },
+    //     isError: false,
+    // });
 
     const handleFetchComponentDetails = () => {
         dispatch({ type: "CONFIG_FETCH_INIT" });
@@ -56,46 +54,43 @@ const SmartPageControl = ({ name, id }) => {
     }, []);
 
     return (
-        <SmartContext.Provider value={{ state, dispatch }}>
-            <form className="m-3">
-                {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? (
-                    <WaitingControl />
-                ) : (
-                    sections?.map((sectionId) => {
-                        const sectionConfig = state["config"]["sectionConfig"]?.filter(
-                            (section) => section.id === sectionId
-                        )[0];
-                        return (
-                            <div key={`section-card-${sectionId}`} className="card mb-3">
-                                <div key={`section-card-header${sectionId}`} className="card-header">
-                                    <div className="d-flex justify-content-between">
-                                        {sectionConfig.title}
-                                        <i className="bi bi-pencil" onClick={() => handleEditSection(sectionId)}></i>
-                                    </div>
-                                </div>
-                                <div key={`section-card-body${sectionId}`} className="card-body">
-                                    {/* This is the main component. */}
-                                    <SmartControl key={`section-${sectionId}`} sectionId={sectionId} />
-                                    {state.mode.isEdit && (
-                                        <div className="d-flex justify-content-center">
-                                            <button className="btn btn-primary mx-2 col-2" onClick={handleSectionSave}>
-                                                Save
-                                            </button>
-                                            <button
-                                                className="btn btn-secondary mx-2 col-2"
-                                                onClick={handleSectionCancel}
-                                            >
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    )}
+        // <SmartContext.Provider value={{ state, dispatch }}>
+        <form className="m-3">
+            {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? (
+                <WaitingControl />
+            ) : (
+                sections?.map((sectionId) => {
+                    const sectionConfig = state["config"]["sectionConfig"]?.filter(
+                        (section) => section.id === sectionId
+                    )[0];
+                    return (
+                        <div key={`section-card-${sectionId}`} className="card mb-3">
+                            <div key={`section-card-header${sectionId}`} className="card-header">
+                                <div className="d-flex justify-content-between">
+                                    {sectionConfig.title}
+                                    <i className="bi bi-pencil" onClick={() => handleEditSection(sectionId)}></i>
                                 </div>
                             </div>
-                        );
-                    })
-                )}
-            </form>
-        </SmartContext.Provider>
+                            <div key={`section-card-body${sectionId}`} className="card-body">
+                                {/* This is the main component. */}
+                                <SmartControl key={`section-${sectionId}`} sectionId={sectionId} />
+                                {state.mode.isEdit && (
+                                    <div className="d-flex justify-content-center">
+                                        <button className="btn btn-primary mx-2 col-2" onClick={handleSectionSave}>
+                                            Save
+                                        </button>
+                                        <button className="btn btn-secondary mx-2 col-2" onClick={handleSectionCancel}>
+                                            Cancel
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    );
+                })
+            )}
+        </form>
+        // </SmartContext.Provider>
     );
 };
 

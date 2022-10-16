@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { SmartContext } from "./SmartPageControl";
+import { SmartContext } from "./SmartContext";
 
 const GridBoxControl = ({ sectionId, control }) => {
     const { state, dispatch } = useContext(SmartContext);

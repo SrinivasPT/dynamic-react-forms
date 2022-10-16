@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { Style } from "../common/Settings";
-import { SmartContext } from "./SmartPageControl";
+import { SmartContext } from "./SmartContext";
 
 const CheckControl = ({ sectionId, control }) => {
     console.log("In the check control!");

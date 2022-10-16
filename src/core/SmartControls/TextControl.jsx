@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Style } from "../common/Settings";
 import { getStateKeyValueForControl } from "./SmartFunctions";
-import { SmartContext } from "./SmartPageControl";
+import { SmartContext } from "./SmartContext";
 
 const TextControl = ({ sectionId, index, control }) => {
     const { state, dispatch } = useContext(SmartContext);
