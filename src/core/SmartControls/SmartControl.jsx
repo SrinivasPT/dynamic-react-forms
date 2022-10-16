@@ -9,7 +9,6 @@ import { SmartContext } from "../Context/SmartContext";
 import TextControl from "../FormControls/TextControl";
 import { evaluateExpression } from "../Context/SmartFunctions";
 import CardControl from "../FormControls/CardControl";
-import { Style } from "../Common/Settings";
 
 const SmartControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);
@@ -46,11 +45,7 @@ const SmartControl = ({ sectionId, dataKey }) => {
         }
     };
 
-    return (
-        <>
-            <CardControl sectionId={sectionId} component={controlGroup.map((control) => getControl(control))} />
-        </>
-    );
+    return <CardControl sectionId={sectionId} component={controlGroup.map((control) => getControl(control))} />;
 };
 
 export default SmartControl;
