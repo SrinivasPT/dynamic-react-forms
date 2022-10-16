@@ -73,7 +73,7 @@ const SmartPageControl = ({ name, id }, ref) => {
                             </div>
                             <div key={`section-card-body${sectionId}`} className="card-body">
                                 {/* This is the main component. */}
-                                <SmartControl key={`section-${sectionId}`} sectionId={sectionId} />
+                                <SmartControl key={`section-${sectionId}`} sectionId={sectionId} dataKey={sectionId} />
                                 {state.mode.isEdit && (
                                     <div className="d-flex justify-content-center">
                                         <button className="btn btn-primary mx-2 col-2" onClick={handleSectionSave}>

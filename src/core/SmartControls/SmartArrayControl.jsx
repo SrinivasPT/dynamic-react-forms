@@ -1,16 +1,21 @@
 import React, { useContext } from "react";
 import SmartControl from "./SmartControl";
-import { getStateKeyValueForSection } from "./SmartFunctions";
+import { getStateKeyValueForControl } from "./SmartFunctions";
 import { SmartContext } from "./SmartContext";
 
-const SmartArrayControl = ({ sectionId }) => {
+const SmartArrayControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);
-    const { data } = getStateKeyValueForSection(sectionId, state);
+    const data = getStateKeyValueForControl(dataKey, state);
 
     return (
         <>
             {data.map((row, index) => (
-                <SmartControl key={`section-${sectionId}-${index}`} sectionId={sectionId} index={index} />
+                <SmartControl
+                    key={`section-${sectionId}-${index}`}
+                    sectionId={sectionId}
+                    index={index}
+                    dataKey={dataKey + "." + index}
+                />
             ))}
         </>
     );

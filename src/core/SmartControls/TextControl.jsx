@@ -3,12 +3,12 @@ import { Style } from "../common/Settings";
 import { getStateKeyValueForControl } from "./SmartFunctions";
 import { SmartContext } from "./SmartContext";
 
-const TextControl = ({ sectionId, index, control }) => {
+const TextControl = ({ sectionId, index, control, dataKey }) => {
     const { state, dispatch } = useContext(SmartContext);
-    const { key, data } = getStateKeyValueForControl(sectionId, index, state, control);
+    const data = getStateKeyValueForControl(dataKey, state);
 
     const handleValueChange = (name, value) =>
-        dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { key, name, value } });
+        dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { dataKey, name, value } });
 
     const readOnlyStyle = state.isReadOnly ? "form-control-plaintext" : "";
 

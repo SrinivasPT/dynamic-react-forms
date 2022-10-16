@@ -166,6 +166,37 @@
                 ]
             },
             {
+                "id": "customFieldTwo",
+                "title": "Custom Section Information",
+                "parent": "contactInformation.customArrayField",
+                "controlGroup": [
+                    {
+                        "id": "fieldSix",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "Field Six",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Field Six",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "fieldSeven",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "Field Seven",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Field Seven",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    }
+                ]
+            },
+            {
                 "id": "customArrayField",
                 "title": "Custom Section Information",
                 "parent": "contactInformation",
@@ -193,6 +224,11 @@
                             "maxLength": 50,
                             "required": true
                         }
+                    },
+                    {
+                        "id": "customFieldTwo",
+                        "type": "CUSTOM",
+                        "width": 4
                     }
                 ]
             }
@@ -210,12 +246,20 @@
             "numberOfEmployeesReporting": 10
         },
         "contactInformation": {
-            "cell": 9000000001,
-            "customField": { "fieldOne": "Field One 1", "fieldTwo": "Field Two 2" },
             "customArrayField": [
-                { "fieldThree": "Field One 101", "fieldFour": "Field Two 201" },
-                { "fieldThree": "Field One 102", "fieldFour": "Field Two 202" }
-            ]
+                {
+                    "fieldThree": "Field One 101",
+                    "fieldFour": "Field Two 201",
+                    "customFieldTwo": { "fieldSix": "Field One 1001", "fieldSeven": "Field Two 2001" }
+                },
+                {
+                    "fieldThree": "Field One 102",
+                    "fieldFour": "Field Two 202",
+                    "customFieldTwo": { "fieldSix": "Field One 1002", "fieldSeven": "Field Two 2002" }
+                }
+            ],
+            "cell": 9000000001,
+            "customField": { "fieldOne": "Field One 1", "fieldTwo": "Field Two 2" }
         },
         "educationDetails": [
             { "collegeName": "ABC College", "experience": 10, "city": "Hyderabad", "country": "India" },

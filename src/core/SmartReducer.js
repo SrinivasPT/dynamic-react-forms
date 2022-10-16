@@ -40,7 +40,7 @@ const smartReducer = (state, action) => {
             state.mode.sectionInEditMode = "";
             break;
         case "CONTROL_VALUE_CHANGE":
-            const nodes = action.payload.key.split(".");
+            const nodes = action.payload.dataKey.split(".");
             let element = {};
             for (let i = 0; i < nodes.length; i++) {
                 if (i === 0) {
