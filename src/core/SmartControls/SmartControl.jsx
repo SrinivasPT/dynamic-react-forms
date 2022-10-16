@@ -1,14 +1,15 @@
 import { useContext } from "react";
-import { evaluateExpression } from "../common/utility";
-import CheckControl from "./CheckControl";
-import GridBoxControl from "./GridBoxControl";
-import RadioControl from "./RadioControl";
-import SelectControl from "./SelectControl";
-import SmartArrayControl from "./SmartArrayControl";
-import { SmartContext } from "./SmartContext";
-import TextControl from "./TextControl";
 
-const SmartControl = ({ sectionId, index, dataKey }) => {
+import CheckControl from "../FormControls/CheckControl";
+import GridBoxControl from "../FormControls/GridBoxControl";
+import RadioControl from "../FormControls/RadioControl";
+import SelectControl from "../FormControls/SelectControl";
+import SmartArrayControl from "./SmartArrayControl";
+import { SmartContext } from "../Context/SmartContext";
+import TextControl from "../FormControls/TextControl";
+import { evaluateExpression } from "../Context/SmartFunctions";
+
+const SmartControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);
     const sectionConfig = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0];
     const controlGroup = sectionConfig["controlGroup"];
@@ -24,7 +25,7 @@ const SmartControl = ({ sectionId, index, dataKey }) => {
 
         switch (control.type) {
             case "TEXT":
-                return <TextControl key={key} sectionId={sectionConfig.id} control={control} index={index} dataKey={childDataKey} />;
+                return <TextControl key={key} control={control} dataKey={childDataKey} />;
             case "RADIO":
                 return <RadioControl key={key} sectionId={sectionConfig.id} control={control} dataKey={childDataKey} />;
             case "CHECK":

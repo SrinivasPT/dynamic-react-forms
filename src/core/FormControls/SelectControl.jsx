@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Style } from "../common/Settings";
-import { SmartContext } from "./SmartContext";
+import { Style } from "../Common/Settings";
+import { SmartContext } from "../Context/SmartContext";
 
 const SelectControl = ({ sectionId, control }) => {
     const { state, dispatch } = useContext(SmartContext);
@@ -14,8 +14,7 @@ const SelectControl = ({ sectionId, control }) => {
             );
     });
 
-    const handleValueChange = (name, value) =>
-        dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });
+    const handleValueChange = (name, value) => dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });
 
     return (
         <div className={`col-${control.width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING} `}>

@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import { Style } from "../common/Settings";
-import { SmartContext } from "./SmartContext";
+import { Style } from "../Common/Settings";
+import { SmartContext } from "../Context/SmartContext";
 
 const RadioControl = ({ sectionId, control }) => {
     const { state, dispatch } = useContext(SmartContext);
     const controlDomain = state["domain"].filter((domain) => domain.categoryCode === control.props.domainCategoryCode);
 
-    const handleValueChange = (name, value) =>
-        dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });
+    const handleValueChange = (name, value) => dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });
 
     return (
         <fieldset className={`col-${control.width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>

@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useContext, useEffect } from "react";
-import WaitingControl from "./WaitingControl";
+import WaitingControl from "../FormControls/WaitingControl";
 import SmartControl from "./SmartControl";
-import { SmartContext } from "./SmartContext";
+import { SmartContext } from "../Context/SmartContext";
 
 const SmartPageControl = ({ name, id }, ref) => {
     const { state, dispatch } = useContext(SmartContext);
@@ -60,9 +60,7 @@ const SmartPageControl = ({ name, id }, ref) => {
                 <WaitingControl />
             ) : (
                 sections?.map((sectionId) => {
-                    const sectionConfig = state["config"]["sectionConfig"]?.filter(
-                        (section) => section.id === sectionId
-                    )[0];
+                    const sectionConfig = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0];
                     return (
                         <div key={`section-card-${sectionId}`} className="card mb-3">
                             <div key={`section-card-header${sectionId}`} className="card-header">

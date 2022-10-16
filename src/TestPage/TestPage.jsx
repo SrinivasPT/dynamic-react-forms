@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { useImmerReducer } from "use-immer";
-import { SmartContext } from "../core/SmartControls/SmartContext";
+import { SmartContext } from "../core/Context/SmartContext";
 import SmartPageControl from "../core/SmartControls/SmartPageControl";
-import smartReducer from "../core/SmartReducer";
+import smartReducer from "../core/Context/SmartReducer";
 
 const TestPage = () => {
     const [state, dispatch] = useImmerReducer(smartReducer, {
