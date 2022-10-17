@@ -14,7 +14,6 @@ const SmartControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);
     const sectionConfig = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0];
     const controlGroup = sectionConfig["controlGroup"];
-    //const width = control ? control.width : 12;
 
     const getControl = (control) => {
         const key = `section-${sectionConfig.id}-${control.id}`;
