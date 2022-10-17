@@ -1,4 +1,233 @@
 {
+    "CHECK-CONFIG": {
+        "title": "Checklist",
+        "sections": ["checklist"],
+        "sectionConfig": [
+            {
+                "id": "checklist",
+                "title": "Checklist",
+                "controlGroup": [
+                    {
+                        "id": "assignedTo",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Assigned To",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Assigned To",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "assignedDate",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Assigned Date",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Assigned Date",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "sections",
+                        "type": "SMART_ARRAY",
+                        "width": 12
+                    }
+                ]
+            },
+            {
+                "id": "sections",
+                "title": "Sections",
+                "controlGroup": [
+                    {
+                        "id": "section",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Section",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Section",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "questions",
+                        "type": "SMART_ARRAY",
+                        "width": 12
+                    }
+                ]
+            },
+            {
+                "id": "questions",
+                "title": "Questions",
+                "controlGroup": [
+                    {
+                        "id": "question",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Question",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter question",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "subQuestions",
+                        "type": "SMART_ARRAY",
+                        "width": 12
+                    }
+                ]
+            },
+            {
+                "id": "subQuestions",
+                "title": "Sub Questions",
+                "controlGroup": [
+                    {
+                        "id": "subQuestion",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Sub Question",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Sub Question",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "response",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Response",
+                            "inputMode": "text",
+                            "placeHolder": "Please enter Response",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "CHECK-1001": {
+        "checklist": {
+            "assignedTo": "John Doe",
+            "assignedDate": "10/17/2022",
+            "sections": [
+                {
+                    "section": "First Section",
+                    "questions": [
+                        {
+                            "question": "First Section - First Question",
+                            "subQuestions": [
+                                {
+                                    "subQuestion": "First Section - First Question - First Sub Question",
+                                    "response": "done"
+                                },
+                                {
+                                    "subQuestion": "First Section - First Question - Second Sub Question",
+                                    "response": "done"
+                                }
+                            ]
+                        },
+                        {
+                            "question": "First Section - Second Question",
+                            "subQuestions": [
+                                {
+                                    "subQuestion": "First Section - Second Question - First Sub Question",
+                                    "response": "done"
+                                },
+                                {
+                                    "subQuestion": "First Section - Second Question - Second Sub Question",
+                                    "response": "done"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "section": "Second Section",
+                    "questions": [
+                        {
+                            "question": "Second Section - First Question",
+                            "subQuestions": [
+                                {
+                                    "subQuestion": "Second Section - First Question - First Sub Question",
+                                    "response": "done"
+                                },
+                                {
+                                    "subQuestion": "Second Section - First Question - Second Sub Question",
+                                    "response": "done"
+                                }
+                            ]
+                        },
+                        {
+                            "question": "Second Section - Second Question",
+                            "subQuestions": [
+                                {
+                                    "subQuestion": "Second Section - Second Question - First Sub Question",
+                                    "response": "done"
+                                },
+                                {
+                                    "subQuestion": "Second Section - Second Question - Second Sub Question",
+                                    "response": "done"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "DOMAIN": [
+        { "categoryCode": "GENDER", "code": "MALE", "value": "Male", "parent": "" },
+        { "categoryCode": "GENDER", "code": "FEMALE", "value": "Female", "parent": "" },
+        { "categoryCode": "GENDER", "code": "OTHER", "value": "Other", "parent": "" },
+        { "categoryCode": "COUNTRY", "code": "INDIA", "value": "India", "parent": "" },
+        { "categoryCode": "COUNTRY", "code": "USA", "value": "USA", "parent": "" },
+        {
+            "categoryCode": "CITY",
+            "code": "HYDERABAD",
+            "value": "Hyderabad",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "PUNE",
+            "value": "Pune",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "BANGALORE",
+            "value": "Bangalore",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "INDIA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "NEW_YORK",
+            "value": "New York",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "USA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "CALIFORNIA",
+            "value": "California",
+            "parentCategoryCode": "COUNTRY",
+            "parentCode": "USA"
+        }
+    ],
     "RESUME-CONFIG": {
         "title": "Resume",
         "sections": ["personalDetails", "contactInformation"],
@@ -232,123 +461,6 @@
             }
         ]
     },
-    "CHECK-CONFIG": {
-        "title": "Checklist",
-        "sections": ["checklist"],
-        "sectionConfig": [
-            {
-                "id": "checklist",
-                "title": "Checklist",
-                "controlGroup": [
-                    {
-                        "id": "assignedTo",
-                        "type": "TEXT",
-                        "width": 3,
-                        "props": {
-                            "label": "Assigned To",
-                            "inputMode": "text",
-                            "placeHolder": "Please enter Assigned To",
-                            "maxLength": 50,
-                            "required": true
-                        }
-                    },
-                    {
-                        "id": "assignedDate",
-                        "type": "TEXT",
-                        "width": 3,
-                        "props": {
-                            "label": "Assigned Date",
-                            "inputMode": "text",
-                            "placeHolder": "Please enter Assigned Date",
-                            "maxLength": 50,
-                            "required": true
-                        }
-                    },
-                    {
-                        "id": "sections",
-                        "type": "SMART_ARRAY",
-                        "width": 12
-                    }
-                ]
-            },
-            {
-                "id": "sections",
-                "title": "Sections",
-                "controlGroup": [
-                    {
-                        "id": "section",
-                        "type": "TEXT",
-                        "width": 3,
-                        "props": {
-                            "label": "Section",
-                            "inputMode": "text",
-                            "placeHolder": "Please enter Section",
-                            "maxLength": 50,
-                            "required": true
-                        }
-                    },
-                    {
-                        "id": "questions",
-                        "type": "SMART_ARRAY",
-                        "width": 12
-                    }
-                ]
-            },
-            {
-                "id": "questions",
-                "title": "Questions",
-                "controlGroup": [
-                    {
-                        "id": "question",
-                        "type": "TEXT",
-                        "width": 3,
-                        "props": {
-                            "label": "Question",
-                            "inputMode": "text",
-                            "placeHolder": "Please enter question",
-                            "maxLength": 50,
-                            "required": true
-                        }
-                    },
-                    {
-                        "id": "subQuestions",
-                        "type": "SMART_ARRAY",
-                        "width": 12
-                    }
-                ]
-            },
-            {
-                "id": "subQuestions",
-                "title": "Sub Questions",
-                "controlGroup": [
-                    {
-                        "id": "subQuestion",
-                        "type": "TEXT",
-                        "width": 3,
-                        "props": {
-                            "label": "Sub Question",
-                            "inputMode": "text",
-                            "placeHolder": "Please enter Sub Question",
-                            "maxLength": 50,
-                            "required": true
-                        }
-                    },
-                    {
-                        "id": "response",
-                        "type": "TEXT",
-                        "width": 3,
-                        "props": {
-                            "label": "Response",
-                            "inputMode": "text",
-                            "placeHolder": "Please enter Response",
-                            "maxLength": 50,
-                            "required": true
-                        }
-                    }
-                ]
-            }
-        ]
-    },
     "RESUME-1001": {
         "personalDetails": {
             "id": 1001,
@@ -381,117 +493,5 @@
             { "collegeName": "DEF College", "experience": 10, "city": "Pune", "country": "India" },
             { "collegeName": "XYG University", "experience": 10, "city": "NY", "country": "USA" }
         ]
-    },
-    "CHECK-1001": {
-        "checklist": {
-            "assignedTo": "John Doe",
-            "assignedDate": "10/17/2022",
-            "sections": [
-                {
-                    "section": "First Section",
-                    "questions": [
-                        {
-                            "question": "First Section - First Question",
-                            "subQuestions": [
-                                {
-                                    "subQuestion": "First Section - First Question - First Sub Question",
-                                    "response": "done"
-                                },
-                                {
-                                    "subQuestion": "First Section - First Question - Second Sub Question",
-                                    "response": "done"
-                                }
-                            ]
-                        },
-                        {
-                            "question": "First Section - Second Question",
-                            "subQuestions": [
-                                {
-                                    "subQuestion": "First Section - Second Question - First Sub Question",
-                                    "response": "done"
-                                },
-                                {
-                                    "subQuestion": "First Section - Second Question - Second Sub Question",
-                                    "response": "done"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "section": "Second Section",
-                    "questions": [
-                        {
-                            "question": "Second Section - First Question",
-                            "subQuestions": [
-                                {
-                                    "subQuestion": "Second Section - First Question - First Sub Question",
-                                    "response": "done"
-                                },
-                                {
-                                    "subQuestion": "Second Section - First Question - Second Sub Question",
-                                    "response": "done"
-                                }
-                            ]
-                        },
-                        {
-                            "question": "Second Section - Second Question",
-                            "subQuestions": [
-                                {
-                                    "subQuestion": "Second Section - Second Question - First Sub Question",
-                                    "response": "done"
-                                },
-                                {
-                                    "subQuestion": "Second Section - Second Question - Second Sub Question",
-                                    "response": "done"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    },
-    "DOMAIN": [
-        { "categoryCode": "GENDER", "code": "MALE", "value": "Male", "parent": "" },
-        { "categoryCode": "GENDER", "code": "FEMALE", "value": "Female", "parent": "" },
-        { "categoryCode": "GENDER", "code": "OTHER", "value": "Other", "parent": "" },
-        { "categoryCode": "COUNTRY", "code": "INDIA", "value": "India", "parent": "" },
-        { "categoryCode": "COUNTRY", "code": "USA", "value": "USA", "parent": "" },
-        {
-            "categoryCode": "CITY",
-            "code": "HYDERABAD",
-            "value": "Hyderabad",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "INDIA"
-        },
-        {
-            "categoryCode": "CITY",
-            "code": "PUNE",
-            "value": "Pune",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "INDIA"
-        },
-        {
-            "categoryCode": "CITY",
-            "code": "BANGALORE",
-            "value": "Bangalore",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "INDIA"
-        },
-        {
-            "categoryCode": "CITY",
-            "code": "NEW_YORK",
-            "value": "New York",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "USA"
-        },
-        {
-            "categoryCode": "CITY",
-            "code": "CALIFORNIA",
-            "value": "California",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "USA"
-        }
-    ]
+    }
 }
