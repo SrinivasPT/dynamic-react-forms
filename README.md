@@ -4,6 +4,8 @@
 2. For DB server -> npm run db
 3. Open browser -> http://localhost:3000
 
+[![Screenshot](screenshot.png)]
+
 # References
 
 1. https://developers.redhat.com/blog/2020/04/28/contract-first-development-create-a-mock-back-end-for-realistic-data-interactions-with-react#

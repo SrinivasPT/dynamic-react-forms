@@ -384,8 +384,8 @@
     },
     "CHECK-1001": {
         "checklist": {
-            "assignedTo": "John Assigned",
-            "assignedDate": "10/01/2021",
+            "assignedTo": "John Doe",
+            "assignedDate": "10/17/2022",
             "sections": [
                 {
                     "section": "First Section",
