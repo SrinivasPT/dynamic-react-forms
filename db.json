@@ -15,7 +15,8 @@
                             "label": "Assigned To",
                             "inputMode": "text",
                             "placeHolder": "Please enter Assigned To",
-                            "maxLength": 50,
+                            "minLength": 5,
+                            "maxLength": 10,
                             "required": true
                         }
                     },
@@ -86,7 +87,6 @@
             },
             {
                 "id": "subQuestions",
-                "title": "Sub Questions",
                 "controlGroup": [
                     {
                         "id": "subQuestion",

@@ -1,3 +1,4 @@
 export const Style = {
+    FORM_CONTROL_REQUIRED_FIELD_BACKGROUND_COLOR: "rgba(255, 0, 0, 0.5)",
     FORM_CONTROL_MARGIN_AND_PADDING: " mb-3 px-2",
 };
