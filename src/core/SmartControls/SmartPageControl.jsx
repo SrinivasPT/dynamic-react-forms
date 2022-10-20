@@ -3,6 +3,8 @@ import React, { useContext, useEffect } from "react";
 import WaitingControl from "../FormControls/WaitingControl";
 import SmartControl from "./SmartControl";
 import { SmartContext } from "../Context/SmartContext";
+import Accordion from "../FormControls/Accordion";
+import CardControl from "../FormControls/CardControl";
 
 const SmartPageControl = ({ name, id }, ref) => {
     const { state, dispatch } = useContext(SmartContext);
@@ -38,15 +40,25 @@ const SmartPageControl = ({ name, id }, ref) => {
         handleFetchComponentDetails();
     }, []);
 
+    const paintPage = (sections) => {
+        if (!sections) return;
+        switch (state.config.layout) {
+            case "ACCORDION":
+                return <Accordion sections={sections} width={state.config.width} />;
+            default:
+                return sections?.map((sectionId) => (
+                    <CardControl
+                        key={`section-${sectionId}`}
+                        sectionId={sectionId}
+                        component={<SmartControl key={`section-${sectionId}`} sectionId={sectionId} dataKey={sectionId} />}
+                    />
+                ));
+        }
+    };
+
     return (
         <form className="m-3">
-            {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? (
-                <WaitingControl />
-            ) : (
-                sections?.map((sectionId) => {
-                    return <SmartControl key={`section-${sectionId}`} sectionId={sectionId} dataKey={sectionId} />;
-                })
-            )}
+            {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? <WaitingControl /> : paintPage(sections)}
         </form>
     );
 };

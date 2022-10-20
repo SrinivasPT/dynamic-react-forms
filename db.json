@@ -190,6 +190,7 @@
         { "categoryCode": "GENDER", "code": "MALE", "value": "Male", "parent": "" },
         { "categoryCode": "GENDER", "code": "FEMALE", "value": "Female", "parent": "" },
         { "categoryCode": "GENDER", "code": "OTHER", "value": "Other", "parent": "" },
+        { "categoryCode": "COUNTRY", "code": "", "value": "--Select--", "parent": "" },
         { "categoryCode": "COUNTRY", "code": "INDIA", "value": "India", "parent": "" },
         { "categoryCode": "COUNTRY", "code": "USA", "value": "USA", "parent": "" },
         {
@@ -231,6 +232,7 @@
     "RESUME-CONFIG": {
         "title": "Resume",
         "sections": ["personalDetails", "contactInformation"],
+        "layout": "ACCORDION",
         "sectionConfig": [
             {
                 "id": "personalDetails",

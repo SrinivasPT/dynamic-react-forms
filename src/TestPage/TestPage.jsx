@@ -18,7 +18,7 @@ const TestPage = () => {
 
     return (
         <SmartContext.Provider value={{ state, dispatch }}>
-            <SmartPageControl name="Check" id="1001" />
+            <SmartPageControl name="Resume" id="1001" />
             <button type="button" className="btn btn-primary" onClick={handleClick}>
                 Submit
             </button>

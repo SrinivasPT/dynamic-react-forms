@@ -44,7 +44,7 @@ const SmartControl = ({ sectionId, dataKey }) => {
         }
     };
 
-    return <CardControl sectionId={sectionId} component={controlGroup.map((control) => getControl(control))} />;
+    return controlGroup.map((control) => getControl(control));
 };
 
 export default SmartControl;
