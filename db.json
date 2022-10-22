@@ -240,7 +240,7 @@
                 "controlGroup": [
                     {
                         "id": "firstName",
-                        "type": "TEXT",
+                        "type": "LABEL",
                         "width": 4,
                         "props": {
                             "label": "First Name",
@@ -252,7 +252,7 @@
                     },
                     {
                         "id": "lastName",
-                        "type": "TEXT",
+                        "type": "LABEL",
                         "width": 4,
                         "props": {
                             "label": "Last Name",
@@ -494,6 +494,298 @@
             { "collegeName": "ABC College", "experience": 10, "city": "Hyderabad", "country": "India" },
             { "collegeName": "DEF College", "experience": 10, "city": "Pune", "country": "India" },
             { "collegeName": "XYG University", "experience": 10, "city": "NY", "country": "USA" }
+        ]
+    },
+    "STUDENT-CONFIG": {
+        "title": "My Info",
+        "layout": "ACCORDION",
+        "sections": ["basicInfo", "preferences", "parentsInfo"],
+        "sectionConfig": [
+            {
+                "id": "basicInfo",
+                "title": "Basic Information",
+                "controlGroup": [
+                    {
+                        "id": "firstName",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "First Name"
+                        }
+                    },
+                    {
+                        "id": "lastName",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "Last Name"
+                        }
+                    },
+                    {
+                        "id": "gender",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "Gender"
+                        }
+                    },
+                    {
+                        "id": "userName",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "User Name"
+                        }
+                    },
+                    {
+                        "id": "email",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "Contact Email"
+                        }
+                    },
+                    {
+                        "id": "mobile",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "Contact Mobile"
+                        }
+                    },
+                    {
+                        "id": "address",
+                        "type": "CONCAT_FIELDS_LABEL",
+                        "width": 12,
+                        "props": {
+                            "label": "Address",
+                            "fields": ["addressLine1", "addressLine2", "cityCode", "stateCode", "countryCode", "pin"],
+                            "templateString": "${fields[0]}, ${fields[1]}, ${fields[2]}, ${fields[3]}, ${fields[4]}, ${fields[5]}"
+                        }
+                    },
+                    {
+                        "id": "citizenship",
+                        "type": "CONCAT_FIELDS_LABEL",
+                        "width": 12,
+                        "props": {
+                            "label": "Citizenship",
+                            "fields": ["primary", "secondary"],
+                            "templateString": "${fields[0]}, ${fields[1]}"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "preferences",
+                "title": "Preferences",
+                "controlGroup": [
+                    {
+                        "id": "coursesPreference",
+                        "type": "SMART",
+                        "width": 12
+                    },
+                    {
+                        "id": "countryPreference",
+                        "type": "SMART",
+                        "width": 12
+                    },
+                    {
+                        "id": "collegePreference",
+                        "type": "SMART",
+                        "width": 12
+                    }
+                ]
+            },
+            {
+                "id": "coursesPreference",
+                "title": "Courses Preferences",
+                "layout": "CARD_NO_HEADER",
+                "controlGroup": [
+                    {
+                        "id": "first",
+                        "type": "LABEL",
+                        "width": 4,
+                        "props": {
+                            "label": "First Preference"
+                        }
+                    },
+                    {
+                        "id": "second",
+                        "type": "LABEL",
+                        "width": 4,
+                        "props": {
+                            "label": "Second Preference"
+                        }
+                    },
+                    {
+                        "id": "third",
+                        "type": "LABEL",
+                        "width": 4,
+                        "props": {
+                            "label": "Third Preference"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "countryPreference",
+                "title": "Country Preferences",
+                "layout": "CARD_NO_HEADER",
+                "controlGroup": [
+                    {
+                        "id": "first",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "First Preference"
+                        }
+                    },
+                    {
+                        "id": "second",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "Second Preference"
+                        }
+                    },
+                    {
+                        "id": "third",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "Third Preference"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "collegePreference",
+                "title": "College Preferences",
+                "layout": "CARD_NO_HEADER",
+                "controlGroup": [
+                    {
+                        "id": "first",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "First Preference"
+                        }
+                    },
+                    {
+                        "id": "second",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "Second Preference"
+                        }
+                    },
+                    {
+                        "id": "third",
+                        "type": "LABEL",
+                        "width": 3,
+                        "props": {
+                            "label": "Third Preference"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "parentsInfo",
+                "title": "Parents Information",
+                "controlGroup": [
+                    {
+                        "id": "parentsInfo",
+                        "type": "GRID_ROW",
+                        "props": {
+                            "gridOptions": {
+                                "rowTitle": "relationship",
+                                "columnDefs": [
+                                    { "id": "firstName", "label": "First Name", "width": 4, "css": "col-4" },
+                                    { "id": "email", "label": "Email", "width": 4, "css": "col-4" },
+                                    { "id": "mobile", "label": "Mobile", "width": 4, "css": "col-4" }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "STUDENT-1001": {
+        "basicInfo": {
+            "firstName": "John",
+            "lastName": "Doe",
+            "gender": "MALE",
+            "userName": "john.doe@gmail.com",
+            "email": "john.doe@gmail.com",
+            "mobile": "999-999-9999",
+            "address": {
+                "addressLine1": "1st River Front Road",
+                "addressLine2": " Near River",
+                "cityCode": "HYDERABAD",
+                "stateCode": "TELENGANA",
+                "countryCode": "INDIA",
+                "pin": "500001"
+            },
+            "citizenship": { "primary": "INDIAN", "secondary": "AMERICAN" }
+        },
+        "preferences": {
+            "coursesPreference": { "first": "ALTERNATIVE_MEDICINE", "second": "ENGLISH_LITERATURE", "third": "ART_DESIGN" },
+            "countryPreference": { "first": "INDIA", "second": "USA", "third": "AUSTRALIA" },
+            "collegePreference": { "first": "NIT_WARANGAL", "second": "HARVARD", "third": "DEAKIN" },
+            "sessionPreference": "2023_JAN_MAR"
+        },
+        "parentsInfo": [
+            {
+                "firstName": "Jane",
+                "lastName": "Doe",
+                "relationship": "MOTHER",
+                "email": "jane.doe@gmail.com",
+                "mobile": "999-999-9990"
+            },
+            {
+                "firstName": "John Senior",
+                "lastName": "Doe",
+                "relationship": "FATHER",
+                "email": "john.senior.doe@gmail.com",
+                "mobile": "999-999-9991"
+            },
+            {
+                "firstName": "Uncle John",
+                "lastName": "Doe",
+                "relationship": "GUARDIAN",
+                "email": "uncle.john.doe@gmail.com",
+                "mobile": "999-999-9992"
+            }
+        ],
+        "educationDetails": [
+            {
+                "completionYear": 2023,
+                "schoolAndBoard": "2000",
+                "marks": "A"
+            },
+            {
+                "completionYear": 2020,
+                "schoolAndBoard": "2001",
+                "marks": "B"
+            }
+        ],
+        "extracurricular": {
+            "about": "I am John Doe, a detective character"
+        },
+        "achievements": [
+            {
+                "activity": "First Invisible character",
+                "categoryCode": "DETECTIVE",
+                "level": "EXPERT",
+                "completionDate": "2020"
+            },
+            {
+                "activity": "Chess",
+                "categoryCode": "SPORTS",
+                "level": "EXPERT",
+                "completionDate": "2020"
+            }
         ]
     }
 }

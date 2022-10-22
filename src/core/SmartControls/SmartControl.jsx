@@ -7,8 +7,11 @@ import SelectControl from "../FormControls/SelectControl";
 import SmartArrayControl from "./SmartArrayControl";
 import { SmartContext } from "../Context/SmartContext";
 import TextControl from "../FormControls/TextControl";
-import { evaluateExpression } from "../Context/SmartFunctions";
+import { evaluateExpression, getStateKeyValueForControl } from "../Context/SmartFunctions";
 import CardControl from "../FormControls/CardControl";
+import LabelControl from "../FormControls/LabelControl";
+import LabelConcatControl from "../FormControls/LabelConcatControl";
+import GridRowControl from "../FormControls/GridRowControl";
 
 const SmartControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);
@@ -27,6 +30,17 @@ const SmartControl = ({ sectionId, dataKey }) => {
         switch (control.type) {
             case "TEXT":
                 return <TextControl key={key} control={control} dataKey={childDataKey} />;
+            case "LABEL":
+                return (
+                    <LabelControl
+                        key={key}
+                        controlId={control.id}
+                        label={control.props.label}
+                        data={getStateKeyValueForControl(dataKey + "." + control.id, state)}
+                    />
+                );
+            case "CONCAT_FIELDS_LABEL":
+                return <LabelConcatControl key={key} control={control} dataKey={childDataKey} />;
             case "RADIO":
                 return <RadioControl key={key} sectionId={sectionConfig.id} control={control} dataKey={childDataKey} />;
             case "CHECK":
@@ -35,6 +49,8 @@ const SmartControl = ({ sectionId, dataKey }) => {
                 return <SelectControl key={key} sectionId={sectionConfig.id} control={control} dataKey={childDataKey} />;
             case "GRID_BOX":
                 return <GridBoxControl key={key} sectionId={control.id} control={control} dataKey={childDataKey} />;
+            case "GRID_ROW":
+                return <GridRowControl key={key} sectionId={control.id} control={control} dataKey={childDataKey} />;
             case "SMART":
                 return <SmartControl key={key} sectionId={control.id} dataKey={childDataKey} />;
             case "SMART_ARRAY":
@@ -44,7 +60,24 @@ const SmartControl = ({ sectionId, dataKey }) => {
         }
     };
 
-    return controlGroup.map((control) => getControl(control));
+    const paintLayout = () => {
+        switch (sectionConfig.layout) {
+            case "CARD":
+                return <CardControl sectionId={sectionId} component={controlGroup.map((control) => getControl(control))} layout="CARD" />;
+            case "CARD_NO_HEADER":
+                return (
+                    <CardControl
+                        sectionId={sectionId}
+                        component={controlGroup.map((control) => getControl(control))}
+                        layout="CARD_NO_HEADER"
+                    />
+                );
+            default:
+                return controlGroup.map((control) => getControl(control));
+        }
+    };
+
+    return paintLayout();
 };
 
 export default SmartControl;
