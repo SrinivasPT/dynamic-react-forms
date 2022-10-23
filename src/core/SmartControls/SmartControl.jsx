@@ -17,7 +17,10 @@ import TabControl from "../FormControls/TabControl";
 
 const SmartControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);
-    const sectionConfig = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0];
+    const sectionConfig = state["config"]["sectionConfig"]?.filter(
+        (section) => section.id === sectionId
+        //section.id === sectionId && section?.template === state.mode.isEdit ? sectionId + "Edit" : section?.template
+    )[0];
     const controlGroup = sectionConfig["controlGroup"];
 
     const getControl = (control) => {

@@ -33,8 +33,8 @@ const SmartPageControl = ({ name, id }, ref) => {
         ]);
     };
 
-    // const sections = state.mode.isEdit ? [state.mode.sectionInEditMode] : state.config.sections;
-    const sections = state.config.sections;
+    const sections = state.mode.isEdit ? [state.mode.sectionInEditMode] : state.config.sections;
+    //const sections = state.config.sections;
 
     useEffect(() => {
         handleFetchComponentDetails();

@@ -6,7 +6,7 @@ import { SmartContext } from "../Context/SmartContext";
 const CardControl = ({ sectionId, component, layout }) => {
     const { state } = useContext(SmartContext);
     const sectionConfig = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0];
-    const width = sectionConfig.width ? sectionConfig.width : 12;
+    const width = sectionConfig?.width ? sectionConfig.width : 12;
 
     const paintCardLayout = () => {
         return (

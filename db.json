@@ -576,6 +576,61 @@
                 ]
             },
             {
+                "id": "basicInfo",
+                "template": "basicInfoEdit",
+                "title": "Basic Information",
+                "controlGroup": [
+                    {
+                        "id": "firstName",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "First Name"
+                        }
+                    },
+                    {
+                        "id": "lastName",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Last Name"
+                        }
+                    },
+                    {
+                        "id": "gender",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Gender"
+                        }
+                    },
+                    {
+                        "id": "userName",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "User Name"
+                        }
+                    },
+                    {
+                        "id": "email",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Contact Email"
+                        }
+                    },
+                    {
+                        "id": "mobile",
+                        "type": "TEXT",
+                        "width": 3,
+                        "props": {
+                            "label": "Contact Mobile"
+                        }
+                    }
+                ]
+            },
+            {
                 "id": "preferences",
                 "title": "Preferences",
                 "controlGroup": [

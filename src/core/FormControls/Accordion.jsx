@@ -4,8 +4,13 @@ import { Style } from "../Common/Settings";
 import SmartControl from "../SmartControls/SmartControl";
 
 const Accordion = ({ sections, width }) => {
-    const { state } = useContext(SmartContext);
+    const { state, dispatch } = useContext(SmartContext);
     const getSectionTitle = (sectionId) => state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0]["title"];
+
+    const handleEditClick = (sectionId) => {
+        console.log("Editing section " + sectionId);
+        dispatch({ type: "EDIT_SECTION_START", payload: sectionId + "_edit" });
+    };
 
     return (
         <div className={`col-${width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
@@ -14,7 +19,7 @@ const Accordion = ({ sections, width }) => {
                     return (
                         <div key={`accordion-item-${sectionId}`} className="accordion-item m-2">
                             <h2 className="accordion-header" id={`heading-${sectionId}`}>
-                                <button
+                                <div
                                     className={`accordion-button ${index ? "collapsed" : ""}`}
                                     type="button"
                                     data-bs-toggle="collapse"
@@ -22,8 +27,9 @@ const Accordion = ({ sections, width }) => {
                                     aria-expanded={index ? "false" : "true"}
                                     aria-controls={`panelsStayOpen-collapse-${sectionId}`}
                                 >
-                                    {getSectionTitle(sectionId)}
-                                </button>
+                                    <b className="col-11">{getSectionTitle(sectionId)}</b>
+                                    <i className="bi bi-pencil" onClick={() => handleEditClick(sectionId)}></i>
+                                </div>
                             </h2>
                             <div
                                 id={`panelsStayOpen-collapse-${sectionId}`}

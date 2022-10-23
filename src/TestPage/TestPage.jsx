@@ -10,7 +10,7 @@ const TestPage = () => {
         data: {},
         domain: [],
         flags: { isFormDataLoading: false, isDomainDataLoading: false, isConfigLoading: false },
-        mode: { isReadOnly: false, isEdit: true, sectionInEditMode: "" },
+        mode: { isReadOnly: false, isEdit: false, sectionInEditMode: "" },
         isError: false,
     });
 

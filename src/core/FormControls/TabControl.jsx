@@ -33,34 +33,32 @@ function TabControl({ sectionId, control, dataKey }) {
 
     const displayTabs = () => {
         return (
-            <nav>
-                <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                    {control["controlGroup"].map((tab) => {
-                        return (
-                            <button
-                                className={"nav-link " + tab.id === selectedTab ? "active" : ""}
-                                id={`nav-${tab.id}-tab`}
-                                data-bs-toggle="tab"
-                                data-bs-target={`#nav-${tab.id}`}
-                                type="button"
-                                role="tab"
-                                aria-controls={`nav-${tab.id}`}
-                                aria-selected={selectedTab === tab.id ? "true" : "false"}
-                                key={dataKey + tab.id}
-                                onClick={() => handleTabClick(tab.id)}
-                            >
-                                {tab["props"]["label"]}
-                            </button>
-                        );
-                    })}
-                </div>
-            </nav>
+            <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                {control["controlGroup"].map((tab) => {
+                    return (
+                        <button
+                            className={`nav-link ${tab.id === selectedTab ? "active" : ""} mb-1`}
+                            id={`nav-${tab.id}-tab`}
+                            data-bs-toggle="tab"
+                            data-bs-target={`#nav-${tab.id}`}
+                            type="button"
+                            role="tab"
+                            aria-controls={`nav-${tab.id}`}
+                            aria-selected={selectedTab === tab.id ? "true" : "false"}
+                            key={dataKey + tab.id}
+                            onClick={() => handleTabClick(tab.id)}
+                        >
+                            {tab["props"]["label"]}
+                        </button>
+                    );
+                })}
+            </div>
         );
     };
 
     return (
         <div className="col-12">
-            {displayTabs()}
+            <nav>{displayTabs()}</nav>
             {displayClickedComponent()}
         </div>
     );
