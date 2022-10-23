@@ -499,7 +499,7 @@
     "STUDENT-CONFIG": {
         "title": "My Info",
         "layout": "ACCORDION",
-        "sections": ["basicInfo", "preferences", "parentsInfo"],
+        "sections": ["achievements_extra_curricular"],
         "sectionConfig": [
             {
                 "id": "basicInfo",
@@ -708,6 +708,96 @@
                         }
                     }
                 ]
+            },
+            {
+                "id": "achievements_extra_curricular",
+                "title": "Achievements",
+                "controlGroup": [
+                    {
+                        "id": "achievements_extra_curricular",
+                        "title": "Achievements",
+                        "type": "TAB",
+                        "controlGroup": [
+                            {
+                                "id": "achievements",
+                                "type": "SMART",
+                                "width": 12,
+                                "props": { "label": "Achievements", "default": true }
+                            },
+                            {
+                                "id": "books",
+                                "type": "SMART",
+                                "width": 12,
+                                "props": { "label": "Books" }
+                            },
+                            {
+                                "id": "activities",
+                                "type": "SMART",
+                                "width": 12,
+                                "props": { "label": "Activities" }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "achievements",
+                "title": "Achievements",
+                "controlGroup": [
+                    {
+                        "id": "achievements",
+                        "type": "GRID_TABLE",
+                        "props": {
+                            "gridOptions": {
+                                "columnDefs": [
+                                    { "id": "activityTitle", "label": "Activity Title", "width": 4, "css": "col-4" },
+                                    { "id": "categoryCode", "label": "Category", "width": 4, "css": "col-4" },
+                                    { "id": "level", "label": "Level", "width": 4, "css": "col-4" },
+                                    { "id": "completionDate", "label": "Completed In", "width": 4, "css": "col-4" }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "books",
+                "title": "Books",
+                "controlGroup": [
+                    {
+                        "id": "books",
+                        "type": "GRID_TABLE",
+                        "props": {
+                            "gridOptions": {
+                                "columnDefs": [
+                                    { "id": "bookTitle", "label": "Book Title", "width": 4, "css": "col-4" },
+                                    { "id": "author", "label": "Author", "width": 4, "css": "col-4" },
+                                    { "id": "description", "label": "Description", "width": 4, "css": "col-4" },
+                                    { "id": "completionDate", "label": "Completed In", "width": 4, "css": "col-4" }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "activities",
+                "title": "Activities",
+                "controlGroup": [
+                    {
+                        "id": "activities",
+                        "type": "GRID_TABLE",
+                        "props": {
+                            "gridOptions": {
+                                "columnDefs": [
+                                    { "id": "activityTitle", "label": "Activity Title", "width": 4, "css": "col-4" },
+                                    { "id": "description", "label": "Description", "width": 4, "css": "col-4" },
+                                    { "id": "completionDate", "label": "Completed In", "width": 4, "css": "col-4" }
+                                ]
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -770,22 +860,43 @@
                 "marks": "B"
             }
         ],
-        "extracurricular": {
-            "about": "I am John Doe, a detective character"
-        },
-        "achievements": [
-            {
-                "activity": "First Invisible character",
-                "categoryCode": "DETECTIVE",
-                "level": "EXPERT",
-                "completionDate": "2020"
-            },
-            {
-                "activity": "Chess",
-                "categoryCode": "SPORTS",
-                "level": "EXPERT",
-                "completionDate": "2020"
-            }
-        ]
+        "achievements_extra_curricular": {
+            "about": "I am John Doe, a detective character",
+            "achievements": [
+                {
+                    "activityTitle": "First in 100 Districts",
+                    "categoryCode": "SPORTS",
+                    "level": "EXPERT",
+                    "completionDate": "2020"
+                },
+                {
+                    "activityTitle": "Played for districts",
+                    "categoryCode": "SPORTS",
+                    "level": "EXPERT",
+                    "completionDate": "2020"
+                }
+            ],
+            "books": [
+                {
+                    "bookTitle": "War And Peace",
+                    "categoryCode": "WAR",
+                    "level": "EXPERT",
+                    "completionDate": "2020"
+                },
+                {
+                    "bookTitle": "Chess Grand Masters",
+                    "categoryCode": "SPORTS",
+                    "level": "EXPERT",
+                    "completionDate": "2020"
+                }
+            ],
+            "activities": [
+                {
+                    "activityTitle": "Traveling around the Asian countries",
+                    "categoryCode": "TRAVELING",
+                    "completionDate": "2020"
+                }
+            ]
+        }
     }
 }
