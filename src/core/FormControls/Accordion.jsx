@@ -9,7 +9,7 @@ const Accordion = ({ sections, width }) => {
 
     const handleEditClick = (sectionId) => {
         console.log("Editing section " + sectionId);
-        dispatch({ type: "EDIT_SECTION_START", payload: sectionId + "_edit" });
+        dispatch({ type: "EDIT_SECTION_START", payload: sectionId });
     };
 
     return (
