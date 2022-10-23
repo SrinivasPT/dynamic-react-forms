@@ -16,6 +16,7 @@ function TabControl({ sectionId, control, dataKey }) {
                 {control["controlGroup"].map((tab, tabIndex) => {
                     return (
                         <div
+                            key={tab.id}
                             className={`tab-pane fade ${tab.id === selectedTab ? " show active " : ""}`}
                             id={`nav-${tab.id}`}
                             role="tabpanel"

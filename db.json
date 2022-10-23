@@ -499,7 +499,7 @@
     "STUDENT-CONFIG": {
         "title": "My Info",
         "layout": "ACCORDION",
-        "sections": ["achievements_extra_curricular"],
+        "sections": ["basicInfo", "preferences", "parentsInfo", "achievements_extra_curricular"],
         "sectionConfig": [
             {
                 "id": "basicInfo",
