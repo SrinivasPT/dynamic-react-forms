@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
-import { getStateKeyValueForControl } from "../Context/SmartFunctions";
+import { getStateKeyValueForControl, isEmpty } from "../Context/SmartFunctions";
 import { SmartContext } from "../Context/SmartContext";
 
 function GridTableControl({ sectionId, control, dataKey }) {
     const { state } = useContext(SmartContext);
+    let gridData = getStateKeyValueForControl(dataKey, state);
+    gridData = isEmpty(gridData) ? [] : gridData;
 
     const getHeader = () => {
         return (
@@ -22,7 +24,7 @@ function GridTableControl({ sectionId, control, dataKey }) {
     const getBody = () => {
         return (
             <tbody>
-                {getStateKeyValueForControl(dataKey, state).map((row, rowIndex) => (
+                {gridData.map((row, rowIndex) => (
                     <tr key={dataKey + rowIndex}>
                         {control["props"]["gridOptions"]["columnDefs"].map((column, colIndex) => (
                             <td key={dataKey + rowIndex + colIndex}>{row[column.id]}</td>

@@ -1,10 +1,14 @@
 import React from "react";
 import { useContext } from "react";
 import { SmartContext } from "../Context/SmartContext";
+import { getStateKeyValueForControl, isEmpty } from "../Context/SmartFunctions";
 import LabelControl from "./LabelControl";
 
 function GridRowControl({ sectionId, control, dataKey }) {
     const { state } = useContext(SmartContext);
+
+    if (isEmpty(state["data"])) return;
+
     return (
         <div className="container text-start">
             {state["data"][sectionId].map((row, rowIndex) => (

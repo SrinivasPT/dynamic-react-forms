@@ -1,5 +1,5 @@
 import React from "react";
 
-const SmartContext = React.createContext(null);
+const SmartContext = React.createContext({});
 
 export { SmartContext };

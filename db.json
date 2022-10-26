@@ -583,49 +583,50 @@
                     {
                         "id": "firstName",
                         "type": "TEXT",
-                        "width": 3,
+                        "width": 6,
                         "props": {
-                            "label": "First Name"
+                            "label": "FIRST NAME"
                         }
                     },
                     {
                         "id": "lastName",
                         "type": "TEXT",
-                        "width": 3,
+                        "width": 6,
                         "props": {
-                            "label": "Last Name"
+                            "label": "LAST NAME"
                         }
                     },
                     {
                         "id": "gender",
-                        "type": "TEXT",
-                        "width": 3,
+                        "type": "RADIO",
+                        "width": 6,
                         "props": {
-                            "label": "Gender"
+                            "label": "Gender",
+                            "domainCategoryCode": "GENDER"
                         }
                     },
                     {
                         "id": "userName",
                         "type": "TEXT",
-                        "width": 3,
+                        "width": 6,
                         "props": {
-                            "label": "User Name"
+                            "label": "YOUR REGISTERED EMAIL/USERNAME"
                         }
                     },
                     {
                         "id": "email",
                         "type": "TEXT",
-                        "width": 3,
+                        "width": 6,
                         "props": {
-                            "label": "Contact Email"
+                            "label": "YOUR CONTACT EMAIL"
                         }
                     },
                     {
                         "id": "mobile",
                         "type": "TEXT",
-                        "width": 3,
+                        "width": 6,
                         "props": {
-                            "label": "Contact Mobile"
+                            "label": "YOUR CONTACT MOBILE"
                         }
                     }
                 ]
