@@ -628,6 +628,66 @@
                         "props": {
                             "label": "YOUR CONTACT MOBILE"
                         }
+                    },
+                    {
+                        "id": "address",
+                        "template": "addressEdit",
+                        "type": "SMART",
+                        "width": 12
+                    }
+                ]
+            },
+            {
+                "id": "address",
+                "template": "addressEdit",
+                "controlGroup": [
+                    {
+                        "id": "addressLine1",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "ADDRESS LINE 1"
+                        }
+                    },
+                    {
+                        "id": "addressLine2",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "ADDRESS LINE 2"
+                        }
+                    },
+                    {
+                        "id": "cityCode",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "CITY"
+                        }
+                    },
+                    {
+                        "id": "stateCode",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "STATE"
+                        }
+                    },
+                    {
+                        "id": "countryCode",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "COUNTRY"
+                        }
+                    },
+                    {
+                        "id": "pin",
+                        "type": "TEXT",
+                        "width": 6,
+                        "props": {
+                            "label": "YOUR PIN CODE/ZIP CODE"
+                        }
                     }
                 ]
             },
@@ -662,7 +722,7 @@
                         "type": "LABEL",
                         "width": 4,
                         "props": {
-                            "label": "First Preference"
+                            "label": "First Preference One"
                         }
                     },
                     {
