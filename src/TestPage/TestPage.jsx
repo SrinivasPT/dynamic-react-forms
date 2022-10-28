@@ -5,6 +5,10 @@ import SmartPageControl from "../core/SmartControls/SmartPageControl";
 import smartReducer from "../core/Context/SmartReducer";
 
 const TestPage = () => {
+    const customFunction = () => {
+        console.log("From the custom button function");
+    };
+
     const [state, dispatch] = useImmerReducer(smartReducer, {
         config: {},
         data: {},
@@ -12,6 +16,7 @@ const TestPage = () => {
         flags: { isFormDataLoading: false, isDomainDataLoading: false, isConfigLoading: false },
         mode: { isReadOnly: false, isEdit: false, sectionInEditMode: "" },
         isError: false,
+        eventHandlers: { changeCaseButton: customFunction },
     });
 
     const handleClick = () => console.log(state.data);

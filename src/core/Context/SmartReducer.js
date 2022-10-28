@@ -52,6 +52,9 @@ const smartReducer = (state, action) => {
                 }
             }
             break;
+        case "SAMPLE_BUTTON_CLICK":
+            state.data.basicInfo.firstName = state.data.basicInfo.firstName.toUpperCase();
+            break;
         default:
             throw new Error();
     }

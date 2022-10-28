@@ -514,6 +514,15 @@
                         }
                     },
                     {
+                        "id": "changeCaseButton",
+                        "type": "BUTTON",
+                        "width": 3,
+                        "props": {
+                            "label": "Change Case",
+                            "action": "SAMPLE_BUTTON_CLICK"
+                        }
+                    },
+                    {
                         "id": "lastName",
                         "type": "LABEL",
                         "width": 3,
