@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { SmartContext } from "../Context/SmartContext";
-import { Style } from "../Common/Settings";
+import { Style } from "../common/Settings";
 import SmartControl from "../SmartControls/SmartControl";
 
 const Accordion = ({ sections, width }) => {

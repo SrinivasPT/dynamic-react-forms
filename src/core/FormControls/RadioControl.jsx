@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Style } from "../Common/Settings";
+import { Style } from "../common/Settings";
 import { SmartContext } from "../Context/SmartContext";
 
 const RadioControl = ({ sectionId, control }) => {
