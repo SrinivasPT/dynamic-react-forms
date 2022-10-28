@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Style } from "../Common/Settings";
+import { Style } from "../common/Settings";
 import { SmartContext } from "../Context/SmartContext";
 
 const CheckControl = ({ sectionId, control }) => {

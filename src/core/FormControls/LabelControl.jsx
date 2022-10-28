@@ -1,5 +1,5 @@
 import React from "react";
-import { Style } from "../Common/Settings";
+import { Style } from "../common/Settings";
 
 const LabelControl = ({ controlId, label, data, css }) => {
     const controlCss = css ? css : `col-lg-3 col-md-6 col-md-6  ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`;

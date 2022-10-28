@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Style } from "../Common/Settings";
+import { Style } from "../common/Settings";
 import { getStateKeyValueForControl } from "../Context/SmartFunctions";
 import { SmartContext } from "../Context/SmartContext";
 
