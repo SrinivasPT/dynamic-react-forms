@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useImmerReducer } from "use-immer";
 import { SmartContext } from "../core/Context/SmartContext";
 import SmartPageControl from "../core/SmartControls/SmartPageControl";

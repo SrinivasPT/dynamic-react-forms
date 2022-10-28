@@ -9,7 +9,6 @@ const LabelConcatControl = ({ control, dataKey }) => {
 
     control.props.fields.forEach((element) => {
         const field = dataKey + "." + element;
-        console.log(field);
         fields.push(getStateKeyValueForControl(field, state));
     });
 

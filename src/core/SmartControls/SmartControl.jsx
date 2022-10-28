@@ -14,12 +14,16 @@ import LabelConcatControl from "../FormControls/LabelConcatControl";
 import GridRowControl from "../FormControls/GridRowControl";
 import GridTableControl from "../FormControls/GridTableControl";
 import TabControl from "../FormControls/TabControl";
-import ButtonControl from "../FormControls/ButtonControl";
+import ButtonControl from "../FormControls/StateButtonControl";
+import StateButtonControl from "../FormControls/StateButtonControl";
+import EventButtonControl from "../FormControls/EventButtonControl copy";
 
 const SmartControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);
     const sectionConfig = state["config"]["sectionConfig"]?.filter(
-        (section) => section.id === sectionId && (state.mode.isEdit ? section?.template === sectionId + "Edit" : true)
+        (section) =>
+            section.id === sectionId &&
+            ((state.mode.isEdit ? section?.template === sectionId + "Edit" : true) || section?.template === "BUTTONS")
     )[0];
     const controlGroup = sectionConfig["controlGroup"];
 
@@ -60,8 +64,10 @@ const SmartControl = ({ sectionId, dataKey }) => {
                 return <GridTableControl key={key} sectionId={control.id} control={control} dataKey={childDataKey} />;
             case "TAB":
                 return <TabControl key={key} sectionId={control.id} control={control} dataKey={childDataKey} />;
-            case "BUTTON":
-                return <ButtonControl key={key} control={control} />;
+            case "STATE_BUTTON":
+                return <StateButtonControl key={key} control={control} />;
+            case "EVENT_BUTTON":
+                return <EventButtonControl key={key} control={control} />;
             case "SMART":
                 return <SmartControl key={key} sectionId={control.id} dataKey={childDataKey} />;
             case "SMART_ARRAY":

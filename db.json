@@ -514,15 +514,6 @@
                         }
                     },
                     {
-                        "id": "changeCaseButton",
-                        "type": "BUTTON",
-                        "width": 3,
-                        "props": {
-                            "label": "Change Case",
-                            "action": "SAMPLE_BUTTON_CLICK"
-                        }
-                    },
-                    {
                         "id": "lastName",
                         "type": "LABEL",
                         "width": 3,
@@ -594,7 +585,8 @@
                         "type": "TEXT",
                         "width": 6,
                         "props": {
-                            "label": "FIRST NAME"
+                            "label": "FIRST NAME",
+                            "required": true
                         }
                     },
                     {
@@ -602,7 +594,8 @@
                         "type": "TEXT",
                         "width": 6,
                         "props": {
-                            "label": "LAST NAME"
+                            "label": "LAST NAME",
+                            "required": true
                         }
                     },
                     {
@@ -643,6 +636,37 @@
                         "template": "addressEdit",
                         "type": "SMART",
                         "width": 12
+                    },
+                    {
+                        "id": "basicInfoActions",
+                        "type": "SMART",
+                        "width": 12
+                    }
+                ]
+            },
+            {
+                "id": "basicInfoActions",
+                "title": "Basic Information",
+                "template": "BUTTONS",
+                "controlGroup": [
+                    {
+                        "id": "submit",
+                        "type": "EVENT_BUTTON",
+                        "width": 3,
+                        "props": {
+                            "label": "Save",
+                            "style": "primary"
+                        }
+                    },
+                    {
+                        "id": "cancel",
+                        "type": "STATE_BUTTON",
+                        "width": 3,
+                        "props": {
+                            "label": "Cancel",
+                            "action": "EDIT_SECTION_CANCEL",
+                            "style": "secondary"
+                        }
                     }
                 ]
             },
