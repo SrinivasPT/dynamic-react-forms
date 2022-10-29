@@ -55,6 +55,12 @@ const smartReducer = (state, action) => {
         case "SAMPLE_BUTTON_CLICK":
             state.data.basicInfo.firstName = state.data.basicInfo.firstName.toUpperCase();
             break;
+        case "SHOW_CONTROL_ERRORS":
+            state.flags.showControlErrors = true;
+            break;
+        case "HIDE_CONTROL_ERRORS":
+            state.flags.showControlErrors = false;
+            break;
         default:
             throw new Error();
     }

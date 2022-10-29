@@ -1,28 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Style } from "../common/Settings";
 import { getStateKeyValueForControl } from "../Context/SmartFunctions";
 import { SmartContext } from "../Context/SmartContext";
+import ErrorControl from "./ErrorControl";
 
 const TextControl = ({ control, dataKey }) => {
     const { state, dispatch } = useContext(SmartContext);
     const data = getStateKeyValueForControl(dataKey, state);
-    const [error, setError] = useState(false);
-    const style = (error) => (error ? { backgroundColor: Style.FORM_CONTROL_REQUIRED_FIELD_BACKGROUND_COLOR } : {});
+    const formControlRef = useRef(null);
 
     const handleValueChange = (name, value) => dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { dataKey, name, value } });
 
     const readOnlyStyle = state.isReadOnly ? "form-control-plaintext" : "";
 
     const handleBlur = (event) => {
-        if (event.target.validity.valid) {
-            setError(false);
-            return;
-        }
-        if (!error && !event.target.validity.valid) setError(true);
+        // if (event.target.validity.valid) {
+        //     setError(false);
+        //     return;
+        // }
+        // if (!error && !event.target.validity.valid) setError(true);
     };
 
     return (
-        <div className={`col-${control.width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
+        <div className={`has-validation col-${control.width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
             <label htmlFor={control.id} className="form-label">
                 {control.props.label}
             </label>
@@ -41,8 +41,9 @@ const TextControl = ({ control, dataKey }) => {
                 min={control.props.min}
                 max={control.props.max}
                 disabled={!state.mode.isEdit}
-                style={style(error)}
+                ref={formControlRef}
             />
+            <ErrorControl formControl={formControlRef} control={control} />
         </div>
     );
 };

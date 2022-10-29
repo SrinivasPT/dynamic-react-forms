@@ -13,20 +13,15 @@ const TestPage = () => {
         config: {},
         data: {},
         domain: [],
-        flags: { isFormDataLoading: false, isDomainDataLoading: false, isConfigLoading: false },
+        flags: { isFormDataLoading: false, isDomainDataLoading: false, isConfigLoading: false, showControlErrors: false },
         mode: { isReadOnly: false, isEdit: false, sectionInEditMode: "" },
         isError: false,
         eventHandlers: { changeCaseButton: customFunction },
     });
 
-    const handleClick = () => console.log(state.data);
-
     return (
         <SmartContext.Provider value={{ state, dispatch }}>
             <SmartPageControl name="Student" id="1001" />
-            <button type="button" className="btn btn-primary" onClick={handleClick}>
-                Submit
-            </button>
         </SmartContext.Provider>
     );
 };

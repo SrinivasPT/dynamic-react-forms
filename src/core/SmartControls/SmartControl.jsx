@@ -14,9 +14,8 @@ import LabelConcatControl from "../FormControls/LabelConcatControl";
 import GridRowControl from "../FormControls/GridRowControl";
 import GridTableControl from "../FormControls/GridTableControl";
 import TabControl from "../FormControls/TabControl";
-import ButtonControl from "../FormControls/StateButtonControl";
 import StateButtonControl from "../FormControls/StateButtonControl";
-import EventButtonControl from "../FormControls/EventButtonControl copy";
+import EventButtonControl from "../FormControls/EventButtonControl";
 
 const SmartControl = ({ sectionId, dataKey }) => {
     const { state } = useContext(SmartContext);

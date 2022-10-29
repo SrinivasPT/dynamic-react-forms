@@ -586,7 +586,9 @@
                         "width": 6,
                         "props": {
                             "label": "FIRST NAME",
-                            "required": true
+                            "required": true,
+                            "errorMessage": "Please enter First Name",
+                            "minLength": 3
                         }
                     },
                     {

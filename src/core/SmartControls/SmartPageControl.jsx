@@ -40,6 +40,17 @@ const SmartPageControl = ({ name, id }, ref) => {
         handleFetchComponentDetails();
     }, []);
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+
+        const isValid = form.checkValidity();
+        isValid ? dispatch({ type: "HIDE_CONTROL_ERRORS" }) : dispatch({ type: "SHOW_CONTROL_ERRORS" });
+
+        console.log(isValid);
+        console.log(state.data);
+    };
+
     const paintPage = (sections) => {
         if (!sections) return;
         switch (state.config.layout) {
@@ -57,8 +68,11 @@ const SmartPageControl = ({ name, id }, ref) => {
     };
 
     return (
-        <form className="m-3">
+        <form className="m-3 needs-validation" noValidate onSubmit={handleSubmit}>
             {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? <WaitingControl /> : paintPage(sections)}
+            <button type="submit" className="btn btn-primary">
+                Submit
+            </button>
         </form>
     );
 };
