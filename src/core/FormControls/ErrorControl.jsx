@@ -10,7 +10,9 @@ const ErrorControl = ({ formControl, control }) => {
     const errorMessages = [];
 
     const checkForRequiredField = () =>
-        control.props?.required && !formControl.current.value ? errorMessages.push(`Please enter ${label}`) : null;
+        control.props?.required && errorMessages.length === 0 && !formControl.current.value
+            ? errorMessages.push(`Please enter ${label}`)
+            : null;
 
     const checkForMinAndMaxLength = () => {
         const violatingMinLength = control.props?.minLength && formControl.current.value.length < control.props?.minLength;
@@ -27,9 +29,9 @@ const ErrorControl = ({ formControl, control }) => {
     const checkForMinAndMaxValue = () => {};
 
     const validate = () => {
-        checkForRequiredField();
         checkForMinAndMaxLength();
         checkForMinAndMaxValue();
+        checkForRequiredField();
         return errorMessages;
     };
 
