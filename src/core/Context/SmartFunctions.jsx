@@ -18,3 +18,8 @@ export function evaluateExpressionForLabelConcat(expression, fields) {
     const dynamicFunc = (expression, model) => new Function("fields", "return " + expression + ";");
     return dynamicFunc(expression, fields)(fields);
 }
+
+export const getDomainValueForCode = (value, domain, categoryCode) => {
+    if (isEmpty(value)) return;
+    return domain.find((element) => element.code === value && element.categoryCode === categoryCode)["value"];
+};

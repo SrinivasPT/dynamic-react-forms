@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { SmartContext } from "../Context/SmartContext";
 import { Style } from "../common/Settings";
 import SmartControl from "../SmartControls/SmartControl";
+import { isEmpty } from "../Context/SmartFunctions";
 
 const Accordion = ({ sections, width }) => {
     const { state, dispatch } = useContext(SmartContext);
@@ -13,28 +14,33 @@ const Accordion = ({ sections, width }) => {
     };
 
     return (
-        <div className={`col-${width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
-            <div className="accordion" id="accordionFlushExample">
+        <div className={`col-${isEmpty(width) ? 12 : width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
+            <div className="accordion" id={`accordion-${sections.join("-")}`}>
                 {sections.map((sectionId, index) => {
                     return (
-                        <div key={`accordion-item-${sectionId}`} className="accordion-item m-2">
+                        <div
+                            key={`accordion-item-${sectionId}`}
+                            className="accordion-item m-2"
+                            aria-labelledby={`v-pills-${sectionId}-tab`}
+                        >
                             <h2 className="accordion-header" id={`heading-${sectionId}`}>
                                 <div
-                                    className={`accordion-button ${index ? "collapsed" : ""}`}
+                                    className={`accordion-button `}
                                     type="button"
                                     data-bs-toggle="collapse"
-                                    data-bs-target={`#panelsStayOpen-collapse-${sectionId}`}
-                                    aria-expanded={index ? "false" : "true"}
-                                    aria-controls={`panelsStayOpen-collapse-${sectionId}`}
+                                    data-bs-target={`#collapse-${sectionId}`}
+                                    aria-expanded={index === 0 ? "true" : "false"}
+                                    aria-controls={`collapse-${sectionId}`}
                                 >
                                     <b className="col-11">{getSectionTitle(sectionId)}</b>
                                     <i className="bi bi-pencil" onClick={() => handleEditClick(sectionId)}></i>
                                 </div>
                             </h2>
                             <div
-                                id={`panelsStayOpen-collapse-${sectionId}`}
-                                className={`accordion-collapse collapse ${index ? "" : "show"}`}
-                                aria-labelledby={`flush-collapse-${sectionId}`}
+                                id={`collapse-${sectionId}`}
+                                className={`accordion-collapse collapse `}
+                                aria-labelledby={`collapse-${sectionId}`}
+                                data-bs-parent={`#accordion-${sections.join("-")}`}
                             >
                                 <div className="accordion-body">
                                     <div className="d-flex flex-wrap">

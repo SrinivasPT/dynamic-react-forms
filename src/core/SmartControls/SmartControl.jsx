@@ -44,7 +44,9 @@ const SmartControl = ({ sectionId, dataKey }) => {
                         key={key}
                         controlId={control.id}
                         label={control.props.label}
+                        categoryCode={control.props.domainCategoryCode}
                         data={getStateKeyValueForControl(dataKey + "." + control.id, state)}
+                        width={control.width}
                     />
                 );
             case "CONCAT_FIELDS_LABEL":

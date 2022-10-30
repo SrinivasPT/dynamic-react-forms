@@ -542,11 +542,12 @@
                         }
                     },
                     {
-                        "id": "gender",
+                        "id": "genderCode",
                         "type": "LABEL",
                         "width": 3,
                         "props": {
-                            "label": "Gender"
+                            "label": "Gender",
+                            "domainCategoryCode": "GENDER"
                         }
                     },
                     {
@@ -621,7 +622,7 @@
                         }
                     },
                     {
-                        "id": "gender",
+                        "id": "genderCode",
                         "type": "RADIO",
                         "width": 6,
                         "props": {
@@ -985,7 +986,7 @@
         "basicInfo": {
             "firstName": "John",
             "lastName": "Doe",
-            "gender": "MALE",
+            "genderCode": "MALE",
             "userName": "john.doe@gmail.com",
             "email": "john.doe@gmail.com",
             "mobile": "999-999-9999",

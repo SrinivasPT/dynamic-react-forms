@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
+import { SmartContext } from "../Context/SmartContext";
 import { Style } from "../common/Settings";
+import { getDomainValueForCode } from "../Context/SmartFunctions";
 
-const LabelControl = ({ controlId, label, data, css }) => {
-    const controlCss = css ? css : `col-lg-3 col-md-6 col-md-6  ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`;
+const LabelControl = ({ controlId, label, data, css, width, categoryCode }) => {
+    const { state } = useContext(SmartContext);
+    const controlCss = css ? css : `col-${width}  ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`;
+
     return (
         <div className={controlCss}>
             <label htmlFor={controlId} className="form-label">
@@ -10,7 +14,7 @@ const LabelControl = ({ controlId, label, data, css }) => {
             </label>
             <br />
             <label>
-                <span className="fs-5">{data}</span>
+                <span className="fs-5">{controlId.endsWith("Code") ? getDomainValueForCode(data, state.domain, categoryCode) : data}</span>
             </label>
         </div>
     );
