@@ -187,46 +187,66 @@
         }
     },
     "DOMAIN": [
-        { "categoryCode": "GENDER", "code": "MALE", "value": "Male", "parent": "" },
-        { "categoryCode": "GENDER", "code": "FEMALE", "value": "Female", "parent": "" },
-        { "categoryCode": "GENDER", "code": "OTHER", "value": "Other", "parent": "" },
-        { "categoryCode": "COUNTRY", "code": "", "value": "--Select--", "parent": "" },
-        { "categoryCode": "COUNTRY", "code": "INDIA", "value": "India", "parent": "" },
-        { "categoryCode": "COUNTRY", "code": "USA", "value": "USA", "parent": "" },
+        { "categoryCode": "GENDER", "code": "MALE", "value": "Male", "parentCode": "" },
+        { "categoryCode": "GENDER", "code": "FEMALE", "value": "Female", "parentCode": "" },
+        { "categoryCode": "GENDER", "code": "OTHER", "value": "Other", "parentCode": "" },
+        { "categoryCode": "COUNTRY", "code": "", "value": "--Select--", "parentCode": "" },
+        { "categoryCode": "COUNTRY", "code": "INDIA", "value": "India", "parentCode": "" },
+        { "categoryCode": "COUNTRY", "code": "USA", "value": "USA", "parentCode": "" },
+        { "categoryCode": "STATE", "code": "", "value": "--Select--", "parentCode": "" },
+        { "categoryCode": "STATE", "code": "MAHARASHTRA", "value": "Maharashtra", "parentCode": "INDIA" },
+        { "categoryCode": "STATE", "code": "TELENGANA", "value": "Telengana", "parentCode": "INDIA" },
+        { "categoryCode": "STATE", "code": "KARNATAKA", "value": "Karnataka", "parentCode": "INDIA" },
+        { "categoryCode": "STATE", "code": "NEW_YORK", "value": "New York", "parentCode": "USA" },
+        { "categoryCode": "STATE", "code": "PENNSYLVANIA", "value": "Pennsylvania", "parentCode": "USA" },
+        { "categoryCode": "STATE", "code": "CALIFORNIA", "value": "California", "parentCode": "USA" },
         {
             "categoryCode": "CITY",
             "code": "HYDERABAD",
             "value": "Hyderabad",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "INDIA"
+            "parentCode": "TELENGANA"
         },
         {
             "categoryCode": "CITY",
             "code": "PUNE",
             "value": "Pune",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "INDIA"
+            "parentCode": "MAHARASHTRA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "MUMBAI",
+            "value": "Mumbai",
+            "parentCode": "MAHARASHTRA"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "NAVE_MUMBAI",
+            "value": "Nave Mumbai",
+            "parentCode": "MAHARASHTRA"
         },
         {
             "categoryCode": "CITY",
             "code": "BANGALORE",
             "value": "Bangalore",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "INDIA"
+            "parentCode": "KARNATAKA"
         },
         {
             "categoryCode": "CITY",
             "code": "NEW_YORK",
             "value": "New York",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "USA"
+            "parentCode": "NEW_YORK"
+        },
+        {
+            "categoryCode": "CITY",
+            "code": "LOS_ANGLES",
+            "value": "Los Angles",
+            "parentCode": "CALIFORNIA"
         },
         {
             "categoryCode": "CITY",
             "code": "CALIFORNIA",
             "value": "California",
-            "parentCategoryCode": "COUNTRY",
-            "parentCode": "USA"
+            "parentCode": "CALIFORNIA"
         }
     ],
     "RESUME-CONFIG": {
@@ -681,7 +701,8 @@
                         "type": "TEXT",
                         "width": 6,
                         "props": {
-                            "label": "ADDRESS LINE 1"
+                            "label": "ADDRESS LINE 1",
+                            "required": true
                         }
                     },
                     {
@@ -693,27 +714,34 @@
                         }
                     },
                     {
-                        "id": "cityCode",
-                        "type": "TEXT",
+                        "id": "countryCode",
+                        "type": "SELECT",
                         "width": 6,
                         "props": {
-                            "label": "CITY"
+                            "label": "COUNTRY",
+                            "required": true,
+                            "domainCategoryCode": "COUNTRY"
                         }
                     },
                     {
                         "id": "stateCode",
-                        "type": "TEXT",
+                        "type": "SELECT",
                         "width": 6,
                         "props": {
-                            "label": "STATE"
+                            "label": "STATE",
+                            "domainCategoryCode": "STATE",
+                            "parentId": "countryCode",
+                            "required": true
                         }
                     },
                     {
-                        "id": "countryCode",
-                        "type": "TEXT",
+                        "id": "cityCode",
+                        "type": "SELECT",
                         "width": 6,
                         "props": {
-                            "label": "COUNTRY"
+                            "label": "CITY",
+                            "domainCategoryCode": "CITY",
+                            "parentId": "stateCode"
                         }
                     },
                     {
@@ -721,7 +749,8 @@
                         "type": "TEXT",
                         "width": 6,
                         "props": {
-                            "label": "YOUR PIN CODE/ZIP CODE"
+                            "label": "YOUR PIN CODE/ZIP CODE",
+                            "required": true
                         }
                     }
                 ]

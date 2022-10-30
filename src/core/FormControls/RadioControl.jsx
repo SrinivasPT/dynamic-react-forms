@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { Style } from "../common/Settings";
 import { SmartContext } from "../Context/SmartContext";
+import ErrorControl from "./ErrorControl";
 
 const RadioControl = ({ sectionId, control }) => {
     const { state, dispatch } = useContext(SmartContext);
+    const formControlRef = useRef(null);
     const controlDomain = state["domain"].filter((domain) => domain.categoryCode === control.props.domainCategoryCode);
 
     const handleValueChange = (name, value) => dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });
@@ -24,6 +26,7 @@ const RadioControl = ({ sectionId, control }) => {
                             checked={state["data"][sectionId][control.id] === domain.code}
                             onChange={(event) => handleValueChange(control.id, event.target.value)}
                             disabled={!state.mode.isEdit}
+                            ref={formControlRef}
                         />
                         <label
                             key={`${sectionId}-${control.id}-radio-label-${domain.code}`}
@@ -35,6 +38,7 @@ const RadioControl = ({ sectionId, control }) => {
                     </div>
                 ))}
             </div>
+            <ErrorControl formControlRef={formControlRef} controlConfig={control} />
         </fieldset>
     );
 };

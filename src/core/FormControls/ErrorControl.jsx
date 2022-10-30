@@ -1,29 +1,31 @@
 import React, { useContext } from "react";
 import { SmartContext } from "../Context/SmartContext";
 
-const ErrorControl = ({ formControl, control }) => {
+const ErrorControl = ({ formControlRef, controlConfig }) => {
     const { state } = useContext(SmartContext);
 
     if (!state.flags.showControlErrors) return;
 
-    const label = control.props.label;
+    const label = controlConfig.props.label;
     const errorMessages = [];
 
     const checkForRequiredField = () =>
-        control.props?.required && errorMessages.length === 0 && !formControl.current.value
+        controlConfig.props?.required && errorMessages.length === 0 && !formControlRef.current.value
             ? errorMessages.push(`Please enter ${label}`)
             : null;
 
     const checkForMinAndMaxLength = () => {
-        const violatingMinLength = control.props?.minLength && formControl.current.value.length < control.props?.minLength;
-        const violatingMaxLength = control.props?.maxLength && formControl.current.value.length > control.props?.maxLength;
+        const violatingMinLength = controlConfig.props?.minLength && formControlRef.current.value.length < controlConfig.props?.minLength;
+        const violatingMaxLength = controlConfig.props?.maxLength && formControlRef.current.value.length > controlConfig.props?.maxLength;
 
         if (violatingMinLength & !violatingMaxLength)
-            errorMessages.push(`Please enter minimum ${control.props?.minLength} characters for ${label}`);
+            errorMessages.push(`Please enter minimum ${controlConfig.props?.minLength} characters for ${label}`);
         if (!violatingMinLength & violatingMaxLength)
-            errorMessages.push(`Please enter less than ${control.props?.maxLength} characters for ${label}`);
+            errorMessages.push(`Please enter less than ${controlConfig.props?.maxLength} characters for ${label}`);
         if (violatingMinLength & violatingMaxLength)
-            errorMessages.push(`Please enter between ${control.props?.minLength} - ${control.props?.maxLength} characters for ${label}`);
+            errorMessages.push(
+                `Please enter between ${controlConfig.props?.minLength} - ${controlConfig.props?.maxLength} characters for ${label}`
+            );
     };
 
     const checkForMinAndMaxValue = () => {};

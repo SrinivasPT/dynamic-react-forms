@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import { Style } from "../common/Settings";
 import { getStateKeyValueForControl } from "../Context/SmartFunctions";
 import { SmartContext } from "../Context/SmartContext";
@@ -24,7 +24,7 @@ const TextControl = ({ control, dataKey }) => {
     return (
         <div className={`has-validation col-${control.width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
             <label htmlFor={control.id} className="form-label">
-                {control.props.label}
+                {`${control.props.label} ${control.props.required ? "*" : ""}`}
             </label>
             <input
                 type={control.type}
@@ -43,7 +43,7 @@ const TextControl = ({ control, dataKey }) => {
                 disabled={!state.mode.isEdit}
                 ref={formControlRef}
             />
-            <ErrorControl formControl={formControlRef} control={control} />
+            <ErrorControl formControlRef={formControlRef} controlConfig={control} />
         </div>
     );
 };

@@ -1,11 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { Style } from "../common/Settings";
 import { SmartContext } from "../Context/SmartContext";
 import { getStateKeyValueForControl } from "../Context/SmartFunctions";
+import ErrorControl from "./ErrorControl";
 
-const SelectControl = ({ sectionId, control, dataKey }) => {
+const SelectControl = ({ sectionId, control, dataKey, parentDataKey }) => {
     const { state, dispatch } = useContext(SmartContext);
     const data = getStateKeyValueForControl(dataKey, state);
+    const parentData = getStateKeyValueForControl(parentDataKey + "." + control.props.parentId, state);
+    const formControlRef = useRef(null);
 
     const [error, setError] = useState(false);
     const style = (error) => (error ? { backgroundColor: Style.FORM_CONTROL_REQUIRED_FIELD_BACKGROUND_COLOR } : {});
@@ -23,13 +26,9 @@ const SelectControl = ({ sectionId, control, dataKey }) => {
     };
 
     const controlDomain = state["domain"].filter((domain) => {
-        if (control.props.parent === null || control.props.parent === undefined || control.props.parent.length === 0)
+        if (control.props.parentId === null || control.props.parentId === undefined || control.props.parentId.length === 0)
             return domain.categoryCode === control.props.domainCategoryCode;
-        else
-            return (
-                domain.categoryCode === control.props.domainCategoryCode &&
-                state["data"][sectionId][control.props.parent] === domain.parentCode
-            );
+        else return domain.categoryCode === control.props.domainCategoryCode && domain.parentCode === parentData;
     });
 
     return (
@@ -39,25 +38,28 @@ const SelectControl = ({ sectionId, control, dataKey }) => {
             </label>
             <select
                 id={control.id}
-                className={`form-control form-control-lg ${readOnlyStyle}`}
+                className={`form-select form-select-lg ${readOnlyStyle}`}
                 value={data}
                 required={control.props.required}
                 onChange={(event) => handleValueChange(control.id, event.target.value)}
                 disabled={!state.mode.isEdit}
                 onBlur={handleBlur}
                 style={style(error)}
+                ref={formControlRef}
             >
+                {!controlDomain.some((domain) => domain.code === "") && <option value={""}>{"--Select--"}</option>}
                 {controlDomain.map((domain) => (
                     <option
                         key={`${sectionId}-${control.id}-select-${domain.code}`}
                         value={domain.code}
-                        defaultValue={state["data"][sectionId][control.id] === domain.code}
+                        defaultValue={data === domain.code}
                         readOnly={state.mode.isEdit}
                     >
                         {domain.value}
                     </option>
                 ))}
             </select>
+            <ErrorControl formControlRef={formControlRef} controlConfig={control} />
         </div>
     );
 };

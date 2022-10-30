@@ -54,7 +54,15 @@ const SmartControl = ({ sectionId, dataKey }) => {
             case "CHECK":
                 return <CheckControl key={key} sectionId={sectionConfig.id} control={control} dataKey={childDataKey} />;
             case "SELECT":
-                return <SelectControl key={key} sectionId={sectionConfig.id} control={control} dataKey={childDataKey} />;
+                return (
+                    <SelectControl
+                        key={key}
+                        sectionId={sectionConfig.id}
+                        control={control}
+                        dataKey={childDataKey}
+                        parentDataKey={dataKey}
+                    />
+                );
             case "GRID_BOX":
                 return <GridBoxControl key={key} sectionId={control.id} control={control} dataKey={childDataKey} />;
             case "GRID_ROW":
