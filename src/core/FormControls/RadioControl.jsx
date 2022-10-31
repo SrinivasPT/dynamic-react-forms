@@ -6,7 +6,7 @@ import ErrorControl from "./ErrorControl";
 const RadioControl = ({ sectionId, control }) => {
     const { state, dispatch } = useContext(SmartContext);
     const formControlRef = useRef(null);
-    const controlDomain = state["domain"].filter((domain) => domain.categoryCode === control.props.domainCategoryCode);
+    const controlDomain = state["domain"].get(control.props.domainCategoryCode);
 
     const handleValueChange = (name, value) => dispatch({ type: "CONTROL_VALUE_CHANGE", payload: { sectionId, name, value } });
 

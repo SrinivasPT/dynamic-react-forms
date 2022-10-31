@@ -12,7 +12,7 @@ const TestPage = () => {
     const [state, dispatch] = useImmerReducer(smartReducer, {
         config: {},
         data: {},
-        domain: [],
+        domain: {},
         flags: { isFormDataLoading: false, isDomainDataLoading: false, isConfigLoading: false, showControlErrors: false },
         mode: { isReadOnly: false, isEdit: false, sectionInEditMode: "" },
         isError: false,
@@ -27,7 +27,7 @@ const TestPage = () => {
                     {state?.config?.sections?.map((section) => (
                         <button
                             key={`v-nav-link-${section}`}
-                            className="nav-link"
+                            className="nav-link mt-3"
                             id={`v-pills-${section}-tab`}
                             data-bs-toggle="pill"
                             data-bs-target={`#collapse-${section}`}

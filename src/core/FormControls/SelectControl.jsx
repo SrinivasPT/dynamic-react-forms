@@ -25,10 +25,9 @@ const SelectControl = ({ sectionId, control, dataKey, parentDataKey }) => {
         if (!error && !event.target.validity.valid) setError(true);
     };
 
-    const controlDomain = state["domain"].filter((domain) => {
-        if (control.props.parentId === null || control.props.parentId === undefined || control.props.parentId.length === 0)
-            return domain.categoryCode === control.props.domainCategoryCode;
-        else return domain.categoryCode === control.props.domainCategoryCode && domain.parentCode === parentData;
+    const controlDomain = state["domain"].get(control.props.domainCategoryCode).filter((domain) => {
+        if (control.props.parentId === null || control.props.parentId === undefined || control.props.parentId.length === 0) return true;
+        else return domain.parentCode === parentData;
     });
 
     return (

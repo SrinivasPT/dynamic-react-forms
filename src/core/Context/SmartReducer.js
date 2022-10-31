@@ -19,7 +19,7 @@ const smartReducer = (state, action) => {
             break;
         case "DOMAIN_DATA_FETCH_SUCCESS":
             state.isDomainDataLoading = false;
-            state.domain = [...action.payload];
+            state.domain = action.payload;
             break;
         case "CONFIG_FETCH_ERROR":
             state.isError = true;

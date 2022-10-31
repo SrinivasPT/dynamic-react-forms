@@ -5,6 +5,7 @@ import SmartControl from "./SmartControl";
 import { SmartContext } from "../Context/SmartContext";
 import Accordion from "../FormControls/Accordion";
 import CardControl from "../FormControls/CardControl";
+import { convertDomainArrayToMap } from "../Context/SmartFunctions";
 
 const SmartPageControl = ({ name, id }, ref) => {
     const { state, dispatch } = useContext(SmartContext);
@@ -17,6 +18,7 @@ const SmartPageControl = ({ name, id }, ref) => {
         dispatch({ type: "FORM_DATA_FETCH_INIT" });
         dispatch({ type: "DOMAIN_DATA_FETCH_INIT" });
 
+        // TODO: Dispatch all the data at once rather than one at a time to avoid three refreshes
         Promise.all([
             axios
                 .get(URL_FOR_CONFIG)
@@ -28,7 +30,7 @@ const SmartPageControl = ({ name, id }, ref) => {
                 .catch(() => dispatch({ type: "FORM_DATA_FETCH_ERROR" })),
             axios
                 .get(URL_FOR_DOMAIN_DATA)
-                .then((result) => dispatch({ type: "DOMAIN_DATA_FETCH_SUCCESS", payload: result.data }))
+                .then((result) => dispatch({ type: "DOMAIN_DATA_FETCH_SUCCESS", payload: convertDomainArrayToMap(result.data) }))
                 .catch(() => dispatch({ type: "DOMAIN_DATA_FETCH_ERROR" })),
         ]);
     };

@@ -20,6 +20,20 @@ export function evaluateExpressionForLabelConcat(expression, fields) {
 }
 
 export const getDomainValueForCode = (value, domain, categoryCode) => {
-    if (isEmpty(value)) return;
-    return domain.find((element) => element.code === value && element.categoryCode === categoryCode)["value"];
+    if (isEmpty(value) || isEmpty(domain)) return;
+    return domain.get(categoryCode).find((element) => element.code === value)["value"];
+};
+
+export const convertDomainArrayToMap = (domain) => {
+    const domainMap = new Map();
+
+    domain.map((element) => {
+        if (domainMap.has(element.categoryCode)) {
+            domainMap.get(element.categoryCode).push(element);
+        } else {
+            domainMap.set(element.categoryCode, [element]);
+        }
+    });
+
+    return domainMap;
 };
