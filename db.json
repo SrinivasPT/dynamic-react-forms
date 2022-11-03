@@ -192,8 +192,8 @@
         { "categoryCode": "GENDER", "code": "OTHER", "value": "Other", "parentCode": "" },
         { "categoryCode": "COUNTRY", "code": "", "value": "--Select--", "parentCode": "" },
         { "categoryCode": "COUNTRY", "code": "INDIA", "value": "India", "parentCode": "" },
-        { "categoryCode": "COUNTRY", "code": "USA", "value": "USA", "parentCode": "" },
-        { "categoryCode": "STATE", "code": "", "value": "--Select--", "parentCode": "" },
+        { "categoryCode": "COUNTRY", "code": "USA", "value": "America", "parentCode": "" },
+        { "categoryCode": "COUNTRY", "code": "AUSTRALIA", "value": "Australia", "parentCode": "" },
         { "categoryCode": "STATE", "code": "MAHARASHTRA", "value": "Maharashtra", "parentCode": "INDIA" },
         { "categoryCode": "STATE", "code": "TELENGANA", "value": "Telengana", "parentCode": "INDIA" },
         { "categoryCode": "STATE", "code": "KARNATAKA", "value": "Karnataka", "parentCode": "INDIA" },
@@ -818,7 +818,8 @@
                         "type": "LABEL",
                         "width": 3,
                         "props": {
-                            "label": "First Preference"
+                            "label": "First Preference",
+                            "domainCategoryCode": "COUNTRY"
                         }
                     },
                     {
@@ -826,7 +827,8 @@
                         "type": "LABEL",
                         "width": 3,
                         "props": {
-                            "label": "Second Preference"
+                            "label": "Second Preference",
+                            "domainCategoryCode": "COUNTRY"
                         }
                     },
                     {
@@ -834,7 +836,8 @@
                         "type": "LABEL",
                         "width": 3,
                         "props": {
-                            "label": "Third Preference"
+                            "label": "Third Preference",
+                            "domainCategoryCode": "COUNTRY"
                         }
                     }
                 ]
@@ -1076,6 +1079,196 @@
                     "activityTitle": "Traveling around the Asian countries",
                     "categoryCode": "TRAVELING",
                     "completionDate": "2020"
+                }
+            ]
+        }
+    },
+    "QUESTION-CONFIG": {
+        "title": "My Info",
+        "sections": ["form"],
+        "sectionConfig": [
+            {
+                "id": "form",
+                "title": "Section",
+                "controlGroup": [
+                    {
+                        "id": "sections",
+                        "type": "SMART_ARRAY",
+                        "width": 12
+                    }
+                ]
+            },
+            {
+                "id": "sections",
+                "title": "Section",
+                "controlGroup": [
+                    {
+                        "id": "questions",
+                        "type": "SMART_ARRAY",
+                        "width": 12
+                    }
+                ]
+            },
+            {
+                "id": "questions",
+                "title": "Questions",
+                "layout": "CARD",
+                "controlGroup": [
+                    {
+                        "id": "question",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "Question",
+                            "placeHolder": "Please enter Assigned Date",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "responses",
+                        "type": "SMART_ARRAY",
+                        "width": 8
+                    }
+                ]
+            },
+            {
+                "id": "responses",
+                "title": "Response",
+                "layout": "CARD",
+                "controlGroup": [
+                    {
+                        "id": "responseOne",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "Response One",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "responseTwo",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "Response Two",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "responseThree",
+                        "type": "TEXT",
+                        "width": 4,
+                        "props": {
+                            "label": "Response Three",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    },
+                    {
+                        "id": "responseFour",
+                        "type": "TEXT",
+                        "width": 12,
+                        "props": {
+                            "label": "Response Four",
+                            "maxLength": 50,
+                            "required": true
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "QUESTION-1001": {
+        "form": {
+            "sections": [
+                {
+                    "name": "First Section",
+                    "questions": [
+                        {
+                            "question": "First Section - First Question",
+                            "responses": [
+                                {
+                                    "id": 1000,
+                                    "responseOne": 1111,
+                                    "responseTwo": 1112,
+                                    "responseThree": 1113,
+                                    "responseFour": "Hello World 1114"
+                                },
+                                {
+                                    "id": 1001,
+                                    "responseOne": 1121,
+                                    "responseTwo": 1122,
+                                    "responseThree": 1123,
+                                    "responseFour": "Hello World 1124"
+                                }
+                            ]
+                        },
+                        {
+                            "question": "First Section - Second Question",
+                            "responses": [
+                                {
+                                    "id": 1000,
+                                    "responseOne": 1211,
+                                    "responseTwo": 1212,
+                                    "responseThree": 1213,
+                                    "responseFour": "Hello World 1214"
+                                },
+                                {
+                                    "id": 1001,
+                                    "responseOne": 1221,
+                                    "responseTwo": 1222,
+                                    "responseThree": 1223,
+                                    "responseFour": "Hello World 1224"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Second Section",
+                    "questions": [
+                        {
+                            "question": "Second Section - First Question",
+                            "responses": [
+                                {
+                                    "id": 1000,
+                                    "responseOne": 2111,
+                                    "responseTwo": 2112,
+                                    "responseThree": 2113,
+                                    "responseFour": "Hello World 2114"
+                                },
+                                {
+                                    "id": 1001,
+                                    "responseOne": 2121,
+                                    "responseTwo": 2122,
+                                    "responseThree": 2123,
+                                    "responseFour": "Hello World 2124"
+                                }
+                            ]
+                        },
+                        {
+                            "question": "Second Section - Second Question",
+                            "responses": [
+                                {
+                                    "id": 1000,
+                                    "responseOne": 2211,
+                                    "responseTwo": 2212,
+                                    "responseThree": 2213,
+                                    "responseFour": "Hello World 2214"
+                                },
+                                {
+                                    "id": 1001,
+                                    "responseOne": 2221,
+                                    "responseTwo": 2222,
+                                    "responseThree": 2223,
+                                    "responseFour": "Hello World 2224"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }

@@ -5,7 +5,7 @@ import SmartControl from "./SmartControl";
 import { SmartContext } from "../Context/SmartContext";
 import Accordion from "../FormControls/Accordion";
 import CardControl from "../FormControls/CardControl";
-import { convertDomainArrayToMap } from "../Context/SmartFunctions";
+import { convertDomainArrayToMap, isEmpty } from "../Context/SmartFunctions";
 
 const SmartPageControl = ({ name, id }, ref) => {
     const { state, dispatch } = useContext(SmartContext);
@@ -17,30 +17,24 @@ const SmartPageControl = ({ name, id }, ref) => {
         dispatch({ type: "CONFIG_FETCH_INIT" });
         dispatch({ type: "FORM_DATA_FETCH_INIT" });
         dispatch({ type: "DOMAIN_DATA_FETCH_INIT" });
+        const payload = {};
 
         // TODO: Dispatch all the data at once rather than one at a time to avoid three refreshes
-        Promise.all([
-            axios
-                .get(URL_FOR_CONFIG)
-                .then((result) => dispatch({ type: "CONFIG_FETCH_SUCCESS", payload: result.data }))
-                .catch(() => dispatch({ type: "CONFIG_FETCH_ERROR" })),
-            axios
-                .get(URL_FOR_FORM_DATA)
-                .then((result) => dispatch({ type: "FORM_DATA_FETCH_SUCCESS", payload: result.data }))
-                .catch(() => dispatch({ type: "FORM_DATA_FETCH_ERROR" })),
-            axios
-                .get(URL_FOR_DOMAIN_DATA)
-                .then((result) => dispatch({ type: "DOMAIN_DATA_FETCH_SUCCESS", payload: convertDomainArrayToMap(result.data) }))
-                .catch(() => dispatch({ type: "DOMAIN_DATA_FETCH_ERROR" })),
-        ]);
+        Promise.all([axios.get(URL_FOR_CONFIG), axios.get(URL_FOR_FORM_DATA), axios.get(URL_FOR_DOMAIN_DATA)]).then((values) => {
+            dispatch({
+                type: "API_RESPONSE",
+                payload: { config: values[0].data, data: values[1].data, domain: convertDomainArrayToMap(values[2].data) },
+            });
+        });
     };
 
-    const sections = state.mode.isEdit ? [state.mode.sectionInEditMode] : state.config.sections;
     //const sections = state.config.sections;
 
     useEffect(() => {
         handleFetchComponentDetails();
     }, []);
+
+    const sections = state.mode.isEdit ? [state.mode.sectionInEditMode] : state.config.sections;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -54,7 +48,6 @@ const SmartPageControl = ({ name, id }, ref) => {
     };
 
     const paintPage = (sections) => {
-        if (!sections) return;
         switch (state.config.layout) {
             case "ACCORDION":
                 return <Accordion sections={sections} width={state.config.width} />;
@@ -70,12 +63,14 @@ const SmartPageControl = ({ name, id }, ref) => {
     };
 
     return (
-        <form className="m-3 needs-validation" noValidate onSubmit={handleSubmit}>
-            {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? <WaitingControl /> : paintPage(sections)}
-            <button type="submit" className="btn btn-primary">
-                Submit
-            </button>
-        </form>
+        state.domain.size && (
+            <form className="needs-validation" noValidate onSubmit={handleSubmit}>
+                {state?.flags?.isFormDataLoading || state?.flags?.isConfigLoading ? <WaitingControl /> : paintPage(sections)}
+                <button type="submit" className="btn btn-primary">
+                    Submit
+                </button>
+            </form>
+        )
     );
 };
 

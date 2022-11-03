@@ -2,3 +2,8 @@ body {
     font-family: "Jost" !important;
     font-weight: 900 !important;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+}

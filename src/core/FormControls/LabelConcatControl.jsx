@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Style } from "../common/Settings";
-import { evaluateExpressionForLabelConcat, getStateKeyValueForControl } from "../Context/SmartFunctions";
+import { evaluateExpressionForLabelConcat, getDomainValueForCode, getStateKeyValueForControl } from "../Context/SmartFunctions";
 import { SmartContext } from "../Context/SmartContext";
 
 const LabelConcatControl = ({ control, dataKey }) => {
@@ -9,7 +9,11 @@ const LabelConcatControl = ({ control, dataKey }) => {
 
     control.props.fields.forEach((element) => {
         const field = dataKey + "." + element;
-        fields.push(getStateKeyValueForControl(field, state));
+        const keyValue = getStateKeyValueForControl(field, state);
+        const finalValue = element.endsWith("Code")
+            ? getDomainValueForCode(keyValue, state.domain, element.replace("Code", "").toUpperCase())
+            : keyValue;
+        fields.push(finalValue);
     });
 
     const templateString = "`" + control.props.templateString + "`";

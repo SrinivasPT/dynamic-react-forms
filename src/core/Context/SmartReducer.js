@@ -9,18 +9,6 @@ const smartReducer = (state, action) => {
         case "DOMAIN_DATA_FETCH_INIT":
             state.isDomainDataLoading = true;
             break;
-        case "CONFIG_FETCH_SUCCESS":
-            state.isConfigLoading = false;
-            state.config = action.payload;
-            break;
-        case "FORM_DATA_FETCH_SUCCESS":
-            state.isFormDataLoading = false;
-            state.data = action.payload;
-            break;
-        case "DOMAIN_DATA_FETCH_SUCCESS":
-            state.isDomainDataLoading = false;
-            state.domain = action.payload;
-            break;
         case "CONFIG_FETCH_ERROR":
             state.isError = true;
             break;
@@ -29,6 +17,11 @@ const smartReducer = (state, action) => {
             break;
         case "DOMAIN_DATA_FETCH_ERROR":
             state.isError = true;
+            break;
+        case "API_RESPONSE":
+            state.data = action.payload.data;
+            state.config = action.payload.config;
+            state.domain = action.payload.domain;
             break;
         case "EDIT_SECTION_START":
             state.mode.isEdit = true;

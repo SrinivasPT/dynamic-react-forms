@@ -3,6 +3,7 @@ import { useImmerReducer } from "use-immer";
 import { SmartContext } from "../core/Context/SmartContext";
 import SmartPageControl from "../core/SmartControls/SmartPageControl";
 import smartReducer from "../core/Context/SmartReducer";
+import { getSectionTitle } from "../core/Context/SmartFunctions";
 
 const TestPage = () => {
     const customFunction = () => {
@@ -27,7 +28,7 @@ const TestPage = () => {
                     {state?.config?.sections?.map((section) => (
                         <button
                             key={`v-nav-link-${section}`}
-                            className="nav-link mt-3"
+                            className="nav-link text-bg-warning  mt-3"
                             id={`v-pills-${section}-tab`}
                             data-bs-toggle="pill"
                             data-bs-target={`#collapse-${section}`}
@@ -35,12 +36,12 @@ const TestPage = () => {
                             role="tab"
                             aria-controls={`v-pills-${section}`}
                         >
-                            {section}
+                            {getSectionTitle(section, state["config"])}
                         </button>
                     ))}
                 </div>
                 <div className="col-8">
-                    <SmartPageControl name="Student" id="1001" />
+                    <SmartPageControl name="STUDENT" id="1001" />
                 </div>
 
                 <div className="col-1"></div>

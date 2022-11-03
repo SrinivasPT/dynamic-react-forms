@@ -20,12 +20,12 @@ const Accordion = ({ sections, width }) => {
                     return (
                         <div
                             key={`accordion-item-${sectionId}`}
-                            className="accordion-item m-2"
+                            className="accordion-item m-3"
                             aria-labelledby={`v-pills-${sectionId}-tab`}
                         >
-                            <h2 className="accordion-header" id={`heading-${sectionId}`}>
+                            <h2 className="accordion-header " id={`heading-${sectionId}`}>
                                 <div
-                                    className={`accordion-button `}
+                                    className={`accordion-button text-bg-info`}
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target={`#collapse-${sectionId}`}

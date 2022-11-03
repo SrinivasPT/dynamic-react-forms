@@ -78,9 +78,21 @@ const SmartControl = ({ sectionId, dataKey }) => {
             case "EVENT_BUTTON":
                 return <EventButtonControl key={key} control={control} />;
             case "SMART":
-                return <SmartControl key={key} sectionId={control.id} dataKey={childDataKey} />;
+                return (
+                    <div className={`col-${control["width"]} border border-primary`}>
+                        <div key={key} className="d-flex flex-row flex-wrap ">
+                            <SmartControl sectionId={control.id} dataKey={childDataKey} />
+                        </div>
+                    </div>
+                );
             case "SMART_ARRAY":
-                return <SmartArrayControl key={key} sectionId={control.id} dataKey={childDataKey} />;
+                return (
+                    <div key={key} className={`col-${control["width"]} border border-primary`}>
+                        <div className="d-flex flex-row flex-wrap">
+                            <SmartArrayControl key={key} sectionId={control.id} dataKey={childDataKey} />
+                        </div>
+                    </div>
+                );
             default:
                 return new Error();
         }

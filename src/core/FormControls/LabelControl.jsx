@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { SmartContext } from "../Context/SmartContext";
 import { Style } from "../common/Settings";
-import { getDomainValueForCode } from "../Context/SmartFunctions";
+import { getDomainValueForCode, isEmpty } from "../Context/SmartFunctions";
 
 const LabelControl = ({ controlId, label, data, css, width, categoryCode }) => {
     const { state } = useContext(SmartContext);
@@ -14,7 +14,9 @@ const LabelControl = ({ controlId, label, data, css, width, categoryCode }) => {
             </label>
             <br />
             <label>
-                <span className="fs-5">{controlId.endsWith("Code") ? getDomainValueForCode(data, state.domain, categoryCode) : data}</span>
+                <span className="fs-5">
+                    {controlId.endsWith("Code") || !isEmpty(categoryCode) ? getDomainValueForCode(data, state.domain, categoryCode) : data}
+                </span>
             </label>
         </div>
     );

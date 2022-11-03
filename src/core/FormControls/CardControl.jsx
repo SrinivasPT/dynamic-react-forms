@@ -6,16 +6,13 @@ import { SmartContext } from "../Context/SmartContext";
 const CardControl = ({ sectionId, component, layout }) => {
     const { state } = useContext(SmartContext);
     const sectionConfig = state["config"]["sectionConfig"]?.filter((section) => section.id === sectionId)[0];
-    const width = sectionConfig?.width ? sectionConfig.width : 12;
 
     const paintCardLayout = () => {
         return (
-            <div className={`col-${width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
-                <div className="card">
-                    {sectionConfig.title ? <div className="card-header">{sectionConfig.title}</div> : <></>}
-                    <div className="card-body">
-                        <div className="d-flex flex-wrap">{[component]}</div>
-                    </div>
+            <div className="card">
+                {sectionConfig.title ? <div className="card-header">{sectionConfig.title}</div> : <></>}
+                <div className="card-body">
+                    <div className="d-flex flex-wrap">{[component]}</div>
                 </div>
             </div>
         );
@@ -23,12 +20,12 @@ const CardControl = ({ sectionId, component, layout }) => {
 
     const paintCardWithOutHeader = () => {
         return (
-            <div className={`col-${width} ${Style.FORM_CONTROL_MARGIN_AND_PADDING}`}>
+            <>
                 <h6>{sectionConfig.title}:</h6>
                 <div className="card-body">
                     <div className="d-flex flex-wrap">{[component]}</div>
                 </div>
-            </div>
+            </>
         );
     };
 
