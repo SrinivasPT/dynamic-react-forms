@@ -1,0 +1,131 @@
+{
+    "id": 1000,
+    "userName": "john.doe",
+    "details": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "genderCode": "MALE",
+        "email": "john.doe@gmail.com",
+        "mobile": "+91 100 700 700",
+        "address": {
+            "typeCode": "CURRENT",
+            "addressLine1": "120 Hudson Street",
+            "addressLine2": "London",
+            "cityCode": "LONDON",
+            "stateCode": "NO_IDEA",
+            "countryCode": "UK"
+        },
+        "citizenshipCode": "ENGLISH",
+        "secondaryCitizenshipCode": "AMERICAN"
+    },
+    "preferences": {
+        "course": [
+            {
+                "departmentCode": "HEALTHCARE",
+                "subDepartmentCode": "ALTERNATIVE_MEDICINE",
+                "order": 1
+            },
+            {
+                "departmentCode": "ARCHITECTURE",
+                "subDepartmentCode": "CONSTRUCTION",
+                "order": 2
+            },
+            {
+                "departmentCode": "EDUCATION_TEACHING",
+                "subDepartmentCode": "PHYSICAL_EDUCATION",
+                "order": 3
+            }
+        ],
+        "countryCode": ["INDIA", "USA", "AUSTRALIA"],
+        "collegeCode": ["MGIT", "CBIT", "NIT"],
+        "entranceExams": [
+            { "examCode": "NEET", "preparationStatusCode": "YET_TO_PREPARE" },
+            { "examCode": "JEE", "preparationStatusCode": "YET_TO_PREPARE" }
+        ],
+        "prospectiveSessionToJoinCode": "2020-APR_JUN"
+    },
+    "parents": [
+        {
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "relationshipCode": "MOTHER",
+            "email": "jane.doe@gmail.com",
+            "mobile": "+91 200 700 700",
+            "order": 1
+        },
+        {
+            "firstName": "Mark",
+            "lastName": "Smith",
+            "relationshipCode": "FATHER",
+            "email": "mark.smith@gmail.com",
+            "mobile": "+91 300 700 700",
+            "order": 2
+        },
+        {
+            "firstName": "John",
+            "lastName": "Nash",
+            "relationshipCode": "GUARDIAN",
+            "email": "john.nash@gmail.com",
+            "mobile": "+91 400 700 700",
+            "order": 3
+        }
+    ],
+    "education": {
+        "current": {
+            "typeCode": "CURRENT",
+            "class": 12,
+            "completionYear": "2023",
+            "schoolCode": "DPS_HYDERABAD",
+            "boardCode": "CBSE",
+            "scoringTypeCode": "GRADE",
+            "score": "A"
+        },
+        "history": [
+            {
+                "typeCode": "PAST",
+                "classCode": "10_CLASS",
+                "completionYear": "2022",
+                "schoolCode": "DPS_HYDERABAD",
+                "boardCode": "CBSE",
+                "scoringTypeCode": "GRADE",
+                "scoreCode": "A",
+                "order": 1
+            },
+            {
+                "typeCode": "PAST",
+                "classCode": "9_CLASS",
+                "completionYear": "2021",
+                "schoolCode": "DPS_HYDERABAD",
+                "boardCode": "CBSE",
+                "scoringTypeCode": "GRADE",
+                "scoreCode": "A",
+                "order": 2
+            }
+        ]
+    },
+    "extraCurricular": {
+        "achievements": [
+            {
+                "achievementsTitle": "Scaling Everest",
+                "categoryCode": "OLYMPIAD",
+                "levelCode": "PARTICIPANT",
+                "completionYear": 2022,
+                "completionMonth": "JAN"
+            }
+        ],
+        "books": [
+            {
+                "bookTitle": "Sherlock Holmes",
+                "author": "Arthur Conan Doyle",
+                "description": "Detective",
+                "completedIn": "10/21/2022"
+            },
+            {
+                "bookTitle": "Designing Data Intensive Applications",
+                "author": "Martin Klansman",
+                "description": "Detective",
+                "completedIn": "10/21/2022"
+            }
+        ]
+    }
+}
