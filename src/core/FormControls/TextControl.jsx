@@ -40,7 +40,7 @@ const TextControl = ({ control, dataKey }) => {
                 maxLength={control.props.maxLength}
                 min={control.props.min}
                 max={control.props.max}
-                disabled={!state.mode.isEdit}
+                // disabled={!state.mode.isEdit}
                 ref={formControlRef}
             />
             <ErrorControl formControlRef={formControlRef} controlConfig={control} />

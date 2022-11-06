@@ -9,7 +9,7 @@ const CardControl = ({ sectionId, component, layout }) => {
 
     const paintCardLayout = () => {
         return (
-            <div className="card">
+            <div className="card mb-3">
                 {sectionConfig.title ? <div className="card-header">{sectionConfig.title}</div> : <></>}
                 <div className="card-body">
                     <div className="d-flex flex-wrap">{[component]}</div>

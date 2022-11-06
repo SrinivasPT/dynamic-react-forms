@@ -1,11 +1,10 @@
 import React from "react";
 import { useImmerReducer } from "use-immer";
-import { SmartContext } from "../core/Context/SmartContext";
-import SmartPageControl from "../core/SmartControls/SmartPageControl";
-import smartReducer from "../core/Context/SmartReducer";
-import { getSectionTitle } from "../core/Context/SmartFunctions";
+import smartReducer from "../../core/Context/SmartReducer";
+import SmartPageControl from "../../core/SmartControls/SmartPageControl";
+import { SmartContext } from "../../core/Context/SmartContext";
 
-const QuestionPage = () => {
+const Question = () => {
     const customFunction = () => {
         console.log("From the custom button function");
     };
@@ -27,4 +26,4 @@ const QuestionPage = () => {
     );
 };
 
-export default QuestionPage;
+export default Question;

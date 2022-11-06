@@ -79,7 +79,7 @@ const SmartControl = ({ sectionId, dataKey }) => {
                 return <EventButtonControl key={key} control={control} />;
             case "SMART":
                 return (
-                    <div className={`col-${control["width"]} border border-primary`}>
+                    <div className={`col-${control["width"]} mb-3`}>
                         <div key={key} className="d-flex flex-row flex-wrap ">
                             <SmartControl sectionId={control.id} dataKey={childDataKey} />
                         </div>
@@ -87,7 +87,7 @@ const SmartControl = ({ sectionId, dataKey }) => {
                 );
             case "SMART_ARRAY":
                 return (
-                    <div key={key} className={`col-${control["width"]} border border-primary`}>
+                    <div key={key} className={`col-${control["width"]} mb-3`}>
                         <div className="d-flex flex-row flex-wrap">
                             <SmartArrayControl key={key} sectionId={control.id} dataKey={childDataKey} />
                         </div>
